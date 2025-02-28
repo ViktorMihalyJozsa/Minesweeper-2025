@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Minesweeper</title>
   <link href="https://fonts.cdnfonts.com/css/caveat" rel="stylesheet">
-  <link rel="stylesheet" href="minesweeper.css">
+  <link rel="stylesheet" href="css/layoutstyle.css">
+  <link rel="stylesheet" href="css/themestyle.css">
 </head>
 <body>
 
@@ -19,7 +20,11 @@
 
         <div class="text-container">
             <img id="text" class="text-image ui-element">
-            <span id="text-content" class="text-content">GAME USE</span> 
+            <span id="text-content" class="text-content">GAME</span> 
+        </div>
+
+        <div id="dropdown-content" class="dropdown-content">
+            <!-- Content from page/minesweeper-page.html will be loaded here -->
         </div>
 
         <div class="button-container">
@@ -59,8 +64,9 @@
   <img id="field-8" src="assets/8.png" style="display: none;">
   <img id="flag" src="assets/flag.png" style="display: none;">
   <img id="flagged-wrong" src="assets/flagged-wrong.png" style="display: none;">
-  <script src="minesweeper.js"></script>
+  
+  <script src="js/minesweeper.js"></script>
+  <script src="js/dropdown.js"></script>
 
 </body>
-
 </html>

@@ -1,0 +1,241 @@
+/*  ========================================================================  *\
+
+    L A Y O U T  -  S T Y L E  -  S H E E T
+
+    *  G E N E R A L  -  S T Y L E  -  S E T T I N G S
+ *  ========================================================================  *
+    *  B O D Y  -  S E T T I N G S
+    *  M A I N  -  S E T T I N G S
+    *  C O N T R O L  -  P A N E L  -  S E T T I N G S
+    *  C O U N T E R
+    *  T I M E R  -  S E T T I N G S
+    *  L I S T  -  P O W E R  L E V E L
+ *  ========================================================================  *
+    *  C O U N T E R  -  N U M B E R
+    *  T E X T  -  C O N T E N T
+    *  D R O P D O W N  -  C O N T E N T
+    *  B U T T O N  -  C O N T A I N E R
+    *  T I M E R  -  N U M B E R
+    *  S E L E C T  -  C O N T A I N E R
+    *  T E X T  -  C O N T E N T
+ *  ========================================================================  *
+    *  C O U N T E R  -  I M A G E
+    *  T E X T  -  I M A G E
+    *  T I M E R  -  I M A G E
+
+\*  ========================================================================  */
+
+
+* {
+    box-sizing:   border-box;
+    user-select:  none;
+  }
+  
+  html, body {
+    width:         100%;
+    height:        100%;
+    margin:        0;
+    padding:       0;
+
+    font-family:  'Caveat', sans-serif;
+  }
+  
+  body {
+    background-image:       url("../assets/wooden_background.png");
+    background-size:        contain;
+    background-repeat:      repeat;
+    background-position-y:  18vh;
+  }
+
+  main {
+    display:          flex;
+    flex-direction:   column;
+    align-items:      center;
+    justify-content:  center;
+
+    width:            100%;
+    height:           100%;
+  }
+  
+  .control-panel {
+    position:       relative;
+
+    width:          30vw;  /* 300px */
+    height:         15vh;  /* 150px */
+    margin-bottom:  2vh;  /* 20px */
+  }
+
+      .counter-container, 
+      .counter-image {
+          position:  absolute;
+          top:       1vh;  /* 10px */
+          left:      0;
+      }
+
+          .counter-image {
+              background-image:   url('../assets/counter.png'); 
+              background-size:    cover; 
+              background-repeat:  no-repeat;
+
+              width:              18vh;  /* 180px */
+              height:             6vh;   /* 60px */
+              border:             none;
+              border-radius:      1vh;  /* 10px */
+            }
+
+          .counter-number {
+              position:      absolute;
+              top:           1vh;  /* 10px */
+              left:          0;
+              padding-left:  4vh;  /* 15px */
+          }
+
+      .text-container, 
+      .text-image, 
+      .text-content {
+          position:       absolute;
+          bottom:         1vh;  /* 10px */
+          left:           0;
+
+          width:          18vh;  /* 180px */
+          height:         4vh;  /* 40px */
+          border:         none;  
+          border-radius:  1vh;  /* 10px */
+      }
+    
+      .dropdown-content {
+          display:           none;
+          position:          absolute;
+          top:               17vh;  /* 170px */
+          left:              0;
+
+          text-align:        center;  /* center */
+          background-color:  rgba(206, 146, 0, 1);  /* #ce9200 */
+
+          width:             30vw;  /* 300px */
+          height:            30vw;  /* 300px */
+          padding:           1vh;   /* 10px */
+          border:            0.1vh solid rgba(0, 0, 0, 0.5);  /* 1px */
+          border-radius:     1vh;  /* 10px */
+
+          overflow:          hidden;
+          scrollbar-width:   none;
+          overflow-y:        auto;
+          z-index:           1;
+      }
+    
+          .dropdown-content.show {
+              display: block;
+          }
+
+      .button-container {
+          position:   absolute;
+          top:        0;
+          left:       50%;
+          transform:  translateX(-50%);
+      }
+
+          .button {
+              cursor:            pointer;
+
+              background-image:  url('../assets/button.png');
+              background-size:   cover;
+
+              width:             20vh;  /* 200px */
+              height:            15vh;  /* 150px */
+              border-radius:     1.5vh;  /* 15px */
+          }
+
+      .timer-container, .timer-image {
+          position:  absolute;
+          top:       1vh;  /* 10px */
+          right:     0;
+      }
+
+          .timer-image {
+              background-image:   url('../assets/counter.png'); 
+              background-size:    cover; 
+              background-repeat:  no-repeat;
+
+              width:              18vh;  /* 180px */
+              height:             6vh;   /* 60px */
+              border:             none;
+              border-radius:      1vh;  /* 10px */
+          }
+
+          .timer-number {
+              position:       absolute;
+              top:            1vh;  /* 10px */
+              right:          0;
+              padding-right:  4vh;  /* 20px */
+          }
+
+
+      /*  ========================================================================  *\
+          L I S T  -  P o w e r  L e v e l
+      \*  ========================================================================  */
+
+          .select-container, 
+          .select {
+            position:       absolute;
+            bottom:         1vh;  /* 10px */
+            right:          0;
+
+            width:          18vh;  /* 180px */
+            height:         4vh;  /* 40px */
+            border-radius:  1vh;  /* 10px */
+          }
+        
+        .text-content, 
+        .select {
+            cursor:            pointer;
+            border:            0.1vh solid rgba(0, 0, 0, 0.5);  /* 1px */
+            border-radius:     1vh;  /* 10px */
+            background-color:  rgba(206, 146, 0, 1);  /* #ce9200 */
+        }
+
+        h3, a, 
+        .text-content, .select, 
+        option {
+            text-align:       center;
+            text-decoration:  none;
+
+            font-family:     'Caveat', sans-serif;
+            font-size:        2.4vh;  /* 24px */
+            font-weight:      bold;
+            letter-spacing:   0.24vh;  /* 2.4px */
+            line-height:      4vh;  /* 40px */
+            color:            black;
+            text-shadow:      1px 1px rgba(255, 255, 255, 0.75), -1px -1px #444;
+        }
+
+            a:hover {
+                font-size:    3vh;  /* 30px */
+                font-weight:  bold;
+                text-shadow:  1px 1px rgba(255, 255, 255, 0.75), -1px -1px #444;
+                color:        yellow;
+                transition:   1s;  /* 1second */  
+            }
+
+        p {
+            font-size:       2.4vh;  /* 24px */
+            font-weight:     bold;
+            letter-spacing:  0.2vh;  /* 2px */
+            line-height:     3vh;  /* 30px */
+            color:           black;
+        }
+  
+    .counter-number, 
+    .timer-number {
+      font-size:       6vh;  /* 60px */
+      font-weight:     bold;
+      letter-spacing:  0.6vh;  /* 6px */
+      line-height:     6vh;  /* 60px */
+      color:           rgba(0, 0, 0, 0.75);
+      text-shadow:     1px 1px rgba(255, 255, 255, 0.75), -1px -1px #444;
+    }
+
+    .ui-element {
+      border:      0.1vh solid rgba(0, 0, 0, 0.5);  /* 1px */
+      box-shadow:  10px 10px 10px rgba(0, 0, 0, 0.5);
+    }
