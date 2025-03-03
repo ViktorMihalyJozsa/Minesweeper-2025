@@ -35,74 +35,74 @@
     
 \*  ========================================================================  */
 
-const bodyWidth = document.body.clientWidth;  // Szélesség
+const bodyWidth = document.body.clientWidth;    // Szélesség
 const bodyHeight = document.body.clientHeight;  // Magasság
 
 const canvas = document.getElementById('myCanvas');  // Vászon
-const c = canvas.getContext('2d');  // Rajzolás
+const c = canvas.getContext('2d');                   // Rajzolás
 
 const controlPanel = document.getElementById('control-panel');  // Vezérlőpanel
-const controlPanelWidth = controlPanel.offsetWidth;  // Vezérlőpanel szélessége
+const controlPanelWidth = controlPanel.offsetWidth;             // Vezérlőpanel szélessége
 
-let size;  // Méret
-let columns;  // Oszlopok
-let rows;  // Sorok
+let size;       // Méret
+let columns;    // Oszlopok
+let rows;       // Sorok
 let mineCount;  // Aknák
 
-const actionButton = document.getElementById('action-button');
-const mineCounter = document.getElementById('mine-count');
-const timeCounter = document.getElementById('time');
+const actionButton = document.getElementById('action-button');  // Akció gomb
+const mineCounter = document.getElementById('mine-count');      // Akna számláló
+const timeCounter = document.getElementById('time');            // Idő számláló
 
-const images = {
-  'hidden': document.getElementById('hidden'),
-  'mine': document.getElementById('mine'),
-  'explodedMine': document.getElementById('exploded-mine'),
-  'flag': document.getElementById('flag'),
-  'flaggedWrong': document.getElementById('flagged-wrong'),
-  '0': document.getElementById('field-0'),
-  '1': document.getElementById('field-1'),
-  '2': document.getElementById('field-2'),
-  '3': document.getElementById('field-3'),
-  '4': document.getElementById('field-4'),
-  '5': document.getElementById('field-5'),
-  '6': document.getElementById('field-6'),
-  '7': document.getElementById('field-7'),
-  '8': document.getElementById('field-8'),
+const images = {                                             // Képek
+  'hidden': document.getElementById('hidden'),               // Rejtett
+  'mine': document.getElementById('mine'),                   // Akna
+  'explodedMine': document.getElementById('exploded-mine'),  // Felrobbant akna
+  'flag': document.getElementById('flag'),                   // Zászló
+  'flaggedWrong': document.getElementById('flagged-wrong'),  // Rossz zászló
+  '0': document.getElementById('field-0'),                   // Mező 0
+  '1': document.getElementById('field-1'),                   // Mező 1
+  '2': document.getElementById('field-2'),                   // Mező 2
+  '3': document.getElementById('field-3'),                   // Mező 3
+  '4': document.getElementById('field-4'),                   // Mező 4
+  '5': document.getElementById('field-5'),                   // Mező 5
+  '6': document.getElementById('field-6'),                   // Mező 6
+  '7': document.getElementById('field-7'),                   // Mező 7
+  '8': document.getElementById('field-8'),                   // Mező 8
 }
 
-const buttons = {
-  start: 'assets/button-start.png',
-  lost: 'assets/button-lost.png',
-  won: 'assets/button-won.png',
+const buttons = {                    // Gombok
+  start: 'assets/button-start.png',  // Indítás
+  lost: 'assets/button-lost.png',    // Vesztett
+  won: 'assets/button-won.png',      // Nyert
 }
 
-let isGameOver;
-let isFirstClick;
-let exploredFields;
-let flagMap;
-let map;
-let exploredMap;
-let remainingMines;
-let timer;
+let isGameOver;      // Játék vége
+let isFirstClick;    // Első kattintás
+let exploredFields;  // Felfedett mezők
+let flagMap;         // Zászlók
+let map;             // Térkép
+let exploredMap;     // Felfedett mezők
+let remainingMines;  // Hátralévő aknák
+let timer;           // Időmérő
 
-const difficultySettings = {
-  easy: {
-    size: controlPanelWidth / 8,
-    columns: 8,
-    rows: 8,
-    mineCount: 7
+const difficultySettings = {      // Nehézségi szint beállítások
+  easy: {                         // Könnyű
+    size: controlPanelWidth / 8,  // Méret
+    columns: 8,                   // Oszlopok
+    rows: 8,                      // Sorok
+    mineCount: 7                  // Aknák
   },
-  medium: {
-    size: controlPanelWidth / 10,
-    columns: 10,
-    rows: 10,
-    mineCount: 10
+  medium: {                        // Közepes
+    size: controlPanelWidth / 10,  // Méret
+    columns: 10,                   // Oszlopok
+    rows: 10,                      // Sorok
+    mineCount: 10                  // Aknák
   },
-  hard: {
-    size: controlPanelWidth / 12,
-    columns: 12,
-    rows: 12,
-    mineCount: 15
+  hard: {                          // Nehéz
+    size: controlPanelWidth / 12,  // Méret
+    columns: 12,                   // Oszlopok
+    rows: 12,                      // Sorok
+    mineCount: 15                  // Aknák
   }
 };
 
