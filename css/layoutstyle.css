@@ -318,8 +318,8 @@ footer {
 
 @media (max-width: 768px) {
     .control-panel {
-        width:  90vw;  /* 300px */
-        height: 15vh;  /* 150px */
+        width:  90vw;
+        height: 22vw;
     }
 
         .counter-container, 
@@ -330,16 +330,20 @@ footer {
         }
 
             .counter-image {
-                width:          28vw;  /* 180px */
-                height:         6vh;  /* 60px */
+                width:          25vw;
+                height:         8vw;
                 border-radius:  1vh;  /* 10px */
+            }
+
+            .counter-number {
+                padding-left:  5vw;
             }
 
         .text-container, 
         .text-image, 
         .text-content {
-            width:          28vw;  /* 180px */
-            height:         4vh;  /* 40px */
+            width:          25vw;
+            height:         6vw;
             border-radius:  1vh;  /* 10px */
         }
 
@@ -356,8 +360,8 @@ footer {
             }
 
         .button {
-            width:          28vw;  /* 200px */
-            height:         15vh;  /* 150px */
+            width:          30vw;
+            height:         22vw;
             border-radius:  1.5vh;  /* 15px */
         }
 
@@ -369,15 +373,19 @@ footer {
         }
 
             .timer-image {
-                width:          28vw;  /* 180px */
-                height:         6vh;  /* 60px */
+                width:          25vw;
+                height:         8vw;
                 border-radius:  1vh;  /* 10px */
+            }
+
+            .timer-number {
+                padding-right:  5vw;
             }
 
         .select-container, 
         .select {
-            width:          28vw;  /* 180px */
-            height:         4vh;  /* 40px */
+            width:          25vw;
+            height:         6vw;
             border-radius:  1vh;  /* 10px */
         }
 }
