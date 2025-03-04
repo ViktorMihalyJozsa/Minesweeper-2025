@@ -94,15 +94,31 @@ main {
         margin-bottom:  2vh;  /* 20px */
     }
 
+    /*  ========================================================================  *\
+        @ M E D I A  -  Q U E R Y  -  7 6 8  P I X E L S
+    \*  ========================================================================  */
+
+        @media (max-width: 768px) {
+            .control-panel {
+                width:  90vw;
+                height: 22vw;
+            }
+        }
+
         /*  ========================================================================  *\
             C O U N T E R  -  C O N T A I N E R   
         \*  ========================================================================  */
 
         .counter-container, 
         .counter-image {
-            position:  absolute;
-            top:       1vh;  /* 10px */
-            left:      0;
+            position:       absolute;
+            top:            10%;
+            left:           0;
+
+            width:          30%;
+            height:         40%;
+            border:         none;
+            border-radius:  1vh;  /* 10px */
         }
 
             .counter-image {
@@ -110,17 +126,15 @@ main {
                 background-size:    cover; 
                 background-repeat:  no-repeat;
 
-                width:              18vh;  /* 180px */
-                height:             6vh;   /* 60px */
-                border:             none;
-                border-radius:      1vh;  /* 10px */
+                width:              100%;
+                height:             100%;
             }
 
             .counter-number {
-                position:      absolute;
-                top:           1vh;  /* 10px */
-                left:          0;
-                padding-left:  4vh;  /* 15px */
+                position:   absolute;
+                top:        0;
+                left:       50%;
+                transform:  translateX(-50%);
             }
 
         /*  ========================================================================  *\
@@ -128,17 +142,31 @@ main {
         \*  ========================================================================  */
 
         .text-container, 
-        .text-image, 
-        .text-content {
+        .text-image {
             position:       absolute;
-            bottom:         1vh;  /* 10px */
+            bottom:         8%;
             left:           0;
 
-            width:          18vh;  /* 180px */
-            height:         4vh;  /* 40px */
-            border:         none;  
+            width:          30%;
+            height:         30%;
+            border:         none;
             border-radius:  1vh;  /* 10px */
         }
+
+            .text-image {
+                cursor:            pointer;
+                background-color:  rgba(206, 146, 0, 1);
+
+                width:             100%;
+                height:            100%;
+            }
+
+            .text-content {
+                position:   absolute;
+                top:        0;
+                left:       50%;
+                transform:  translateX(-50%);
+            }
 
         /*  ========================================================================  *\
             D R O P D O W N  -  C O N T E N T
@@ -178,27 +206,40 @@ main {
         \*  ========================================================================  */
 
         .button-container {
-            position:   absolute;
-            top:        0;
-            left:       50%;
-            transform:  translateX(-50%);
+            position:       absolute;
+            top:            0;
+            left:           50%;
+            transform:      translateX(-50%);
+
+            width:          30%;
+            height:         100%;
+            border:         none;
+            border-radius:  1.5vh;  /* 15px */
         }
 
             .button {
-                cursor:             pointer;
-                width:              20vh;  /* 200px */
-                height:             15vh;  /* 150px */
-                border-radius:      1.5vh;  /* 15px */
+                cursor:           pointer;
+                text-decoration:  none;
+
+                width:            100%;
+                height:           100%;
+                border:           none;
+                border-radius:    1.5vh;  /* 15px */
             }
 
         /*  ========================================================================  *\
             T I M E R  -  C O N T A I N E R
         \*  ========================================================================  */
 
-        .timer-container, .timer-image {
-            position:  absolute;
-            top:       1vh;  /* 10px */
-            right:     0;
+        .timer-container, 
+        .timer-image {
+            position:       absolute;
+            top:            10%;
+            right:          0;
+            width:          30%;
+            height:         40%;
+            border:         none;
+            border-radius:  1vh;  /* 10px */
         }
 
             .timer-image {
@@ -206,19 +247,16 @@ main {
                 background-size:    cover; 
                 background-repeat:  no-repeat;
 
-                width:              18vh;  /* 180px */
-                height:             6vh;   /* 60px */
-                border:             none;
-                border-radius:      1vh;  /* 10px */
+                width:              100%;
+                height:             100%;
             }
 
             .timer-number {
-                position:       absolute;
-                top:            1vh;  /* 10px */
-                right:          0;
-                padding-right:  4vh;  /* 20px */
+                position:   absolute;
+                top:        0;
+                right:      50%;
+                transform:  translateX(50%);
             }
-
 
         /*  ========================================================================  *\
             S E L E C T  -  C O N T A I N E R
@@ -227,21 +265,27 @@ main {
         .select-container, 
         .select {
             position:       absolute;
-            bottom:         1vh;  /* 10px */
             right:          0;
+            bottom:         10%;
 
-            width:          18vh;  /* 180px */
-            height:         4vh;  /* 40px */
+            width:          30%;
+            height:         30%;
+            border:         none;
             border-radius:  1vh;  /* 10px */
         }
-        
-        .text-content, 
-        .select {
-            cursor:            pointer;
-            border:            0.1vh solid rgba(0, 0, 0, 0.5);  /* 1px */
-            border-radius:     1vh;  /* 10px */
-            background-color:  rgba(206, 146, 0, 1);  /* #ce9200 */
-        }
+
+            .select {
+                position:   absolute;
+                top:        0;
+                left:       50%;
+                transform:  translateX(-50%);
+
+                cursor:            pointer;
+                background-color:  rgba(206, 146, 0, 1);
+
+                width:             100%;
+                height:            100%;
+            }
 
         /*  ========================================================================  *\
             T E X T  -  C O N T E N T
@@ -280,12 +324,12 @@ main {
   
         .counter-number, 
         .timer-number {
-            font-size:       6vh;  /* 60px */
+            font-size:       3rem;  /* 30px */
             font-weight:     bold;
-            letter-spacing:  0.6vh;  /* 6px */
-            line-height:     6vh;  /* 60px */
-            color:           rgba(0, 0, 0, 0.75);
-            text-shadow:     1px 1px rgba(255, 255, 255, 0.75), -1px -1px #444;
+            letter-spacing:  0.3rem;  /* 3px */
+            line-height:     3.3rem;  /* 33px */
+            color:           black;
+            text-shadow:     0.1rem 0.1rem rgba(255, 255, 255, 0.75), -0.1rem -0.1rem #444;
         }
 
         .ui-element {
@@ -308,84 +352,4 @@ footer {
     width:            100%;
     height:           8vh;  /* 80px */
     padding:          2vh 6vw 2vh 6vw;  /* 20px 50px */
-}
-
-/*  ========================================================================  *\
-
-    @media  -  R E S P O N S I V E  -  D E S I G N
-
-\*  ========================================================================  */
-
-@media (max-width: 768px) {
-    .control-panel {
-        width:  90vw;
-        height: 22vw;
-    }
-
-        .counter-container, 
-        .counter-image {
-            position:  absolute;
-            top:       1vh;  /* 10px */
-            left:      0;
-        }
-
-            .counter-image {
-                width:          25vw;
-                height:         8vw;
-                border-radius:  1vh;  /* 10px */
-            }
-
-            .counter-number {
-                padding-left:  5vw;
-            }
-
-        .text-container, 
-        .text-image, 
-        .text-content {
-            width:          25vw;
-            height:         6vw;
-            border-radius:  1vh;  /* 10px */
-        }
-
-        .dropdown-content {
-            width:       90vw;  /* 300px */
-            max-height:  0vw;   /* 0px */
-
-            transition:  max-height 3s ease-in-out;
-        }
-
-            .dropdown-content.show {
-                display:     block;
-                max-height:  90vw;  /* 300px */
-            }
-
-        .button {
-            width:          30vw;
-            height:         22vw;
-            border-radius:  1.5vh;  /* 15px */
-        }
-
-
-        .timer-container, .timer-image {
-            position:  absolute;
-            top:       1vh;  /* 10px */
-            right:     0;
-        }
-
-            .timer-image {
-                width:          25vw;
-                height:         8vw;
-                border-radius:  1vh;  /* 10px */
-            }
-
-            .timer-number {
-                padding-right:  5vw;
-            }
-
-        .select-container, 
-        .select {
-            width:          25vw;
-            height:         6vw;
-            border-radius:  1vh;  /* 10px */
-        }
 }
