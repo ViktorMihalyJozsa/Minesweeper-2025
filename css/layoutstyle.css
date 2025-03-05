@@ -1,76 +1,80 @@
-/*  ========================================================================  *\
+/* ======================================================================== *\
+   L A Y O U T  -  S T Y L E  -  S H E E T
+\* ======================================================================== */
 
-    L A Y O U T  -  S T Y L E  -  S H E E T
-
-\*  ========================================================================  */
 * {
-    box-sizing:   border-box;
-    user-select:  none;
+    box-sizing: border-box;
 }
 
-/*  ========================================================================  *\
-    H T M L  -  B O D Y  -  S E T T I N G S    
-\*  ========================================================================  */
+
+/* ======================================================================== *\
+   H T M L  -  B O D Y  -  S E T T I N G S    
+\* ======================================================================== */
   
 html, body {
-    width:         100%;
-    height:        100%;
-    margin:        0;
-    padding:       0;
+    width:            100%;
+    height:           100%;
+    margin:           0;
+    padding:          0;
 
-    font-family:  'Caveat', sans-serif;
+    font-family:     'Caveat', sans-serif;
+
+    display:          flex;
+    flex-direction:   column;
+    align-items:      center;
+    justify-content:  center;
 }
   
 body {
-    background-image:       url("../assets/wooden_background.png");
-    background-size:        contain;
-    background-repeat:      repeat;
-    background-position-y:  18vh;
+    background-image:     url("../assets/wooden_background.png");
+    background-size:      cover;
+    background-repeat:    no-repeat;
+    background-position:  center;
 }
 
-/*  ========================================================================  *\
-    H E A D E R
-\*  ========================================================================  */
+
+/* ======================================================================== *\
+   H E A D E R
+\* ======================================================================== */
 
 header {
-    position:         fixed;
-    top:              0;
-    
-    display:          flex;
-    flex-direction:   row;
-    justify-content:  flex-start;
-    align-items:      center;
+    position:          fixed;
+    top:               0;
 
-    width:            100%;
-    height:           10vh;  /* 100px */
-    padding:          0vh 5vw 0vh 5vw;  /* 0px 50px */
+    display:           flex;
+    flex-direction:    row;
+    align-items:       center;
+
+    width:             100%;
+    height:            10vh;
+    padding:           0 5vw;
+
+    background-color:  rgba(0, 0, 0, 0.5);
 }
 
     .header-logo {
-        width:              10vh;  /* 60px */
-        height:             10vh;  /* 60px */
+        width:              10vh;
+        height:             10vh;
 
         background-image:   url('../assets/logo.png');
-        background-size:    cover;
+        background-size:    contain;
         background-repeat:  no-repeat;
     }
 
     .header-text {
-        width:    100%;
-        height:   auto;
-        padding:  2vh 0vh 2vh 0vh;  /* 20px 50px 20px 0px */
-
-            font-size:       6vh;    /* 60px */
-            font-weight:     bold;
-            letter-spacing:  0.6vh;  /* 12px */
-            line-height:     6vh;    /* 80px */
-            color:           rgba(206, 146, 0, 1);;
-            text-shadow:     0.6vh 0.6vh 0.6vh rgba(0, 0, 0, 1), -0.2vh -0.2vh black;
+        flex-grow:       1;
+        font-size:       6vh;
+        font-weight:     bold;
+        letter-spacing:  0.6vh;
+        color:           rgba(206, 146, 0, 1);
+        text-shadow:     0.6vh 0.6vh 0.6vh rgba(0, 0, 0, 1);
+        text-align:      left;
     }
 
-/*  ========================================================================  *\
-    M A I N  -  S E T T I N G S
-\*  ========================================================================  */
+
+/* ======================================================================== *\
+   M A I N  -  S E T T I N G S
+\* ======================================================================== */
 
 main {
     display:          flex;
@@ -80,98 +84,145 @@ main {
 
     width:            100%;
     height:           100%;
+    padding-top:      2vh;
 }
 
-    /*  ========================================================================  *\
-        C O N T R O L  -  P A N E L  
-    \*  ========================================================================  */
-  
-    .control-panel {
-        position:       relative;
 
-        width:          30vw;  /* 300px */
-        height:         15vh;  /* 150px */
-        margin-bottom:  2vh;  /* 20px */
+    /* ======================================================================== *\
+       C O N T R O L  -  P A N E L  
+    \* ======================================================================== */
+
+    .control-panel {
+        position:          relative;
+
+        width:             30vw;
+        height:            15vh;
+        margin-bottom:     2vh;
+
+        background-color:  rgba(0, 0, 0, 0.2);
+        padding:           1vh;
+        border-radius:     1vh;
     }
 
-    /*  ========================================================================  *\
-        @ M E D I A  -  Q U E R Y  -  7 6 8  P I X E L S
-    \*  ========================================================================  */
 
-        @media (max-width: 768px) {
-            .control-panel {
-                width:  90vw;
-                height: 22vw;
-            }
+        /* ======================================================================== *\
+           B U T T O N - S T Y L I N G
+        \* ======================================================================== */
+
+        .button-container {
+            position:   absolute;
+            top:        0;
+            left:       50%;
+            transform:  translateX(-50%);
+
+            width:      30%;
+            height:     100%;
         }
 
-        /*  ========================================================================  *\
-            C O U N T E R  -  C O N T A I N E R   
-        \*  ========================================================================  */
-
-        .counter-container, 
-        .counter-image {
-            position:       absolute;
-            top:            10%;
-            left:           0;
-
-            width:          30%;
-            height:         40%;
-            border:         none;
-            border-radius:  1vh;  /* 10px */
-        }
-
-            .counter-image {
-                background-image:   url('../assets/counter.png'); 
-                background-size:    cover; 
-                background-repeat:  no-repeat;
-
+            .button-image {
                 width:              100%;
                 height:             100%;
+                border:             0.1vh solid black;
+                border-radius:      1.5vh;
+
+                background-image:   url("../assets/button.png");
+                background-size:    contain;
+                background-repeat:  no-repeat;
+    
+                cursor:             pointer;
+                text-decoration:    none;
             }
 
-            .counter-number {
-                position:   absolute;
-                top:        0;
-                left:       50%;
-                transform:  translateX(-50%);
-            }
 
-        /*  ========================================================================  *\
-            T E X T  -  C O N T A I N E R
-        \*  ========================================================================  */
+        /* ======================================================================== *\
+           C O U N T E R  -  A N D  -  T I M E R  -  S T Y L I N G
+        \* ======================================================================== */
 
-        .text-container, 
-        .text-image {
-            position:       absolute;
-            bottom:         8%;
-            left:           0;
-
-            width:          30%;
-            height:         30%;
-            border:         none;
-            border-radius:  1vh;  /* 10px */
+        .counter-container {
+            position:  absolute;
+            top:       1vh;
+            left:      0;
         }
 
-            .text-image {
-                cursor:            pointer;
-                background-color:  rgba(206, 146, 0, 1);
+        .timer-container {
+            position:  absolute;
+            top:       1vh;
+            right:     0;
+        }
 
-                width:             100%;
-                height:            100%;
-            }
+        .counter-container,
+        .timer-container {
+            width:                30%;
+            height:               40%;
+            border:               0.1vh solid black;
+            border-radius:        1vh;
 
-            .text-content {
-                position:   absolute;
-                top:        0;
-                left:       50%;
-                transform:  translateX(-50%);
-            }
+            text-align:           center;
 
-        /*  ========================================================================  *\
-            D R O P D O W N  -  C O N T E N T
-        \*  ========================================================================  */
-    
+            background-image:     url("../assets/counter.png");
+            background-size:      cover;
+            background-repeat:    no-repeat;
+            background-position:  center;
+        }
+
+        .counter-number,
+        .timer-number {
+            font-size:         3rem;
+            font-weight:       bold;
+            letter-spacing:    0.3vh;
+            line-height:       5vh;
+            color:             white;
+            text-shadow:       1px 1px 2px black;
+        }
+
+        /* ======================================================================== *\
+           T E X T  -  A N D  -  S E L E C T  -  S T Y L I N G
+        \* ======================================================================== */
+
+        .text-container {
+            position:  absolute;
+            bottom:    1vh;
+            left:      0;
+
+            width:     30%;
+            height:    30%;
+        }
+
+        .select-container {
+            position:  absolute;
+            bottom:    1vh;
+            right:     0;
+
+            width:     30%;
+            height:    30%;
+        }
+
+        .button-text,
+        .select-text {
+            cursor:            pointer;
+            text-align:        center;
+
+            width:             100%;
+            height:            100%;
+
+            background-color:  rgba(206, 146, 0, 1);
+            border:            0.1vh solid black;
+            border-radius:     1vh;
+
+            font-family:       'Caveat', sans-serif;
+            font-size:         1.2rem;
+            font-weight:       bold;
+            letter-spacing:    0.2vh;
+            line-height:       30%;
+            color:             white;
+            text-shadow:       1px 1px 2px black;
+        }
+
+
+        /* ======================================================================== *\
+           D R O P D O W N  -  C O N T E N T
+        \* ======================================================================== */
+
         .dropdown-content {
             display:           none;
             position:          absolute;
@@ -182,10 +233,10 @@ main {
             background-color:  rgba(206, 146, 0, 1);  /* #ce9200 */
 
             width:             30vw;  /* 300px */
-            max-height:        0vw;   /* 0px */
+            max-height:        0;
             padding:           1vh;   /* 10px */
-            border:            0.1vh solid rgba(0, 0, 0, 0.5);  /* 1px */
-            border-radius:     1vh;  /* 10px */
+            border:            0.1vh solid black;
+            border-radius:     1vh;
 
             overflow:          hidden;
             scrollbar-width:   none;
@@ -194,162 +245,113 @@ main {
 
             transition:        max-height 3s ease-in-out;
         }
-    
+
             .dropdown-content.show {
                 display:     block;
                 max-height:  30vw;  /* 300px */
             }
-            
-    
-        /*  ========================================================================  *\
-            B U T T O N  -  C O N T A I N E R    
-        \*  ========================================================================  */
 
-        .button-container {
-            position:       absolute;
-            top:            0;
-            left:           50%;
-            transform:      translateX(-50%);
 
-            width:          30%;
-            height:         100%;
-            border:         none;
-            border-radius:  1.5vh;  /* 15px */
-        }
+            /* ======================================================================== *\
+               D R O P D O W N  -  I T E M S
+            \* ======================================================================== */
 
-            .button {
-                cursor:           pointer;
+            h3 {
+                margin-top:      1rem;
+                font-size:       2rem;
+                font-weight:     bold;
+                letter-spacing:  0.2vh;
+                color:           white;
+                text-shadow:     1px 1px 2px black;
+            }
+
+            p {
+                font-size:       1.2rem;
+                letter-spacing:  0.12vh;
+                color:           white;
+                text-shadow:     1px 1px 2px black;
+            }
+
+            a {
                 text-decoration:  none;
-
-                width:            100%;
-                height:           100%;
-                border:           none;
-                border-radius:    1.5vh;  /* 15px */
+                font-size:        2rem;
+                letter-spacing:   0.1vh;
+                color:            white;
+                text-shadow:      1px 1px 2px black;
             }
 
-        /*  ========================================================================  *\
-            T I M E R  -  C O N T A I N E R
-        \*  ========================================================================  */
+                a:hover {
+                    text-decoration:  none;
+                    color:            rgba(206, 146, 0, 0.5);
+                    transition:       color 0.5s;
+                }
 
-        .timer-container, 
-        .timer-image {
-            position:       absolute;
-            top:            10%;
-            right:          0;
-            width:          30%;
-            height:         40%;
-            border:         none;
-            border-radius:  1vh;  /* 10px */
-        }
 
-            .timer-image {
-                background-image:   url('../assets/counter.png'); 
-                background-size:    cover; 
-                background-repeat:  no-repeat;
+    /* ======================================================================== *\
+       C A N V A S  -  F O R  M I N E S W E E P E R
+    \* ======================================================================== */
 
-                width:              100%;
-                height:             100%;
-            }
+    #myCanvas {
+        width:             30vw;
+        height:            30vw;
+        order:             2px solid black;
+        background-color:  #ccc;
+    }
 
-            .timer-number {
-                position:   absolute;
-                top:        0;
-                right:      50%;
-                transform:  translateX(50%);
-            }
-
-        /*  ========================================================================  *\
-            S E L E C T  -  C O N T A I N E R
-        \*  ========================================================================  */
-
-        .select-container, 
-        .select {
-            position:       absolute;
-            right:          0;
-            bottom:         10%;
-
-            width:          30%;
-            height:         30%;
-            border:         none;
-            border-radius:  1vh;  /* 10px */
-        }
-
-            .select {
-                position:   absolute;
-                top:        0;
-                left:       50%;
-                transform:  translateX(-50%);
-
-                cursor:            pointer;
-                background-color:  rgba(206, 146, 0, 1);
-
-                width:             100%;
-                height:            100%;
-            }
-
-        /*  ========================================================================  *\
-            T E X T  -  C O N T E N T
-        \*  ========================================================================  */
-
-        h3, a, 
-        .text-content, .select, 
-        option {
-            text-align:       center;
-            text-decoration:  none;
-
-            font-family:     'Caveat', sans-serif;
-            font-size:        2.4vh;  /* 24px */
-            font-weight:      bold;
-            letter-spacing:   0.24vh;  /* 2.4px */
-            line-height:      4vh;  /* 40px */
-            color:            black;
-            text-shadow:      1px 1px rgba(255, 255, 255, 0.75), -1px -1px #444;
-        }
-
-            a:hover {
-                font-size:    3vh;  /* 30px */
-                font-weight:  bold;
-                text-shadow:  1px 1px rgba(255, 255, 255, 0.75), -1px -1px #444;
-                color:        yellow;
-                transition:   1s;  /* 1second */  
-            }
-
-        p {
-            font-size:       2.4vh;  /* 24px */
-            font-weight:     bold;
-            letter-spacing:  0.2vh;  /* 2px */
-            line-height:     3vh;  /* 30px */
-            color:           black;
-        }
-  
-        .counter-number, 
-        .timer-number {
-            font-size:       3rem;  /* 30px */
-            font-weight:     bold;
-            letter-spacing:  0.3rem;  /* 3px */
-            line-height:     3.3rem;  /* 33px */
-            color:           black;
-            text-shadow:     0.1rem 0.1rem rgba(255, 255, 255, 0.75), -0.1rem -0.1rem #444;
-        }
-
-        .ui-element {
-            border:      0.1vh solid rgba(0, 0, 0, 0.5);  /* 1px */
-            box-shadow:  10px 10px 10px rgba(0, 0, 0, 0.5);
-        }
-
-/*  ========================================================================  *\
-    F O O T E R
-\*  ========================================================================  */
+/* ======================================================================== *\
+   F O O T E R
+\* ======================================================================== */
 
 footer {
     position:         fixed;
     bottom:           0;
-    
+
     display:          flex;
     justify-content:  flex-end;
     align-items:      center;
 
     width:            100%;
-    height:           8vh;  /* 80px */
-    padding:          2vh 6vw 2vh 6vw;  /* 20px 50px */
+    height:           8vh;
+    padding:          2vh 6vw;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    color:            white;
+    font-size:        1.2rem;
+}
+
+footer a {
+    color:           rgba(206, 146, 0, 1);
+    text-decoration:  none;
+}
+
+footer a:hover {
+    text-decoration:  none;
+    color:           rgba(206, 146, 0, 0.5);
+    transition:      color 0.5s;
+}
+
+
+/* ======================================================================== *\
+   R E S P O N S I V E  -  D E S I G N  -  7 6 8  P I X E L S
+\* ======================================================================== */
+
+@media (max-width: 768px) {
+    .control-panel {
+        width:  90vw;
+        height: 22vw;
+    }
+
+    #myCanvas {
+        width:   90vw;
+        height:  90vw;
+    }
+
+    .dropdown-content {
+        width:      90vw;
+        max-height:  0;
+    }
+        .dropdown-content.show {
+            display:     block;
+            max-height:  90vw;
+        }
 }
