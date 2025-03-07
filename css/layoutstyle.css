@@ -62,12 +62,11 @@ header {
     }
 
     .header-text {
-        flex-grow:       1;
-        font-size:       6vh;
+        font-size:       3em;
         font-weight:     bold;
-        letter-spacing:  0.6vh;
+        letter-spacing:  0.3em;
         color:           rgba(206, 146, 0, 1);
-        text-shadow:     0.6vh 0.6vh 0.6vh rgba(0, 0, 0, 1);
+        text-shadow:     0.6em 0.6em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
         text-align:      left;
     }
 
@@ -169,10 +168,10 @@ main {
         .timer-number {
             font-size:         3rem;
             font-weight:       bold;
-            letter-spacing:    0.3vh;
-            line-height:       5vh;
-            color:             white;
-            text-shadow:       1px 1px 2px black;
+            letter-spacing:    0.3rem;
+            line-height:       2rem;
+            color:             rgba(206, 146, 0, 1);
+            text-shadow:       0.2rem 0.2rem 0.3rem black, -0.1rem -0.1rem black;
         }
 
         /* ======================================================================== *\
@@ -205,17 +204,17 @@ main {
             width:             100%;
             height:            100%;
 
-            background-color:  rgba(206, 146, 0, 1);
+            background-color:  rgba(206, 146, 0, 0.9);
             border:            0.1vh solid black;
             border-radius:     1vh;
 
             font-family:       'Caveat', sans-serif;
-            font-size:         1.2rem;
+            font-size:         1rem;
             font-weight:       bold;
-            letter-spacing:    0.2vh;
-            line-height:       30%;
-            color:             white;
-            text-shadow:       1px 1px 2px black;
+            letter-spacing:    0.1rem;
+            line-height:       0.5rem;
+            color:             rgba(255, 255, 255, 0.75);
+            text-shadow:       0.1rem 0.1rem 0.15rem black, -0.1rem -0.1rem black;
         }
 
 
@@ -230,7 +229,7 @@ main {
             left:              0;
 
             text-align:        center;  /* center */
-            background-color:  rgba(206, 146, 0, 1);  /* #ce9200 */
+            background-color:  rgba(206, 146, 0, 0.9);  /* #ce9200 */
 
             width:             30vw;  /* 300px */
             max-height:        0;
@@ -257,32 +256,32 @@ main {
             \* ======================================================================== */
 
             h3 {
-                margin-top:      1rem;
-                font-size:       2rem;
+                margin:          1.5rem 0rem 0.5rem 0rem;
+                font-size:       1.5rem;
                 font-weight:     bold;
-                letter-spacing:  0.2vh;
-                color:           white;
-                text-shadow:     1px 1px 2px black;
+                letter-spacing:  0.15rem;
+                color:           rgba(255, 255, 255, 0.75);
+                text-shadow:     0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
             }
 
             p {
-                font-size:       1.2rem;
-                letter-spacing:  0.12vh;
-                color:           white;
-                text-shadow:     1px 1px 2px black;
+                font-size:       1.25rem;
+                letter-spacing:  0.125rem;
+                color:           rgba(255, 255, 255, 0.75);
+                text-shadow:     0.1rem 0.1rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
             }
 
             a {
                 text-decoration:  none;
                 font-size:        2rem;
-                letter-spacing:   0.1vh;
-                color:            white;
+                letter-spacing:   0.2rem;
+                color:            rgba(255, 255, 255, 0.75);
                 text-shadow:      1px 1px 2px black;
             }
 
                 a:hover {
                     text-decoration:  none;
-                    color:            rgba(206, 146, 0, 0.5);
+                    color:            rgba(139, 0, 0, 0.75);
                     transition:       color 0.5s;
                 }
 
@@ -315,20 +314,30 @@ footer {
     padding:          2vh 6vw;
 
     background-color: rgba(0, 0, 0, 0.5);
-    color:            white;
-    font-size:        1.2rem;
 }
 
-footer a {
-    color:           rgba(206, 146, 0, 1);
-    text-decoration:  none;
-}
+    .footer-text {
+        font-size:       1.5rem;
+        font-weight:     bold;
+        letter-spacing:  0.15rem;
+        color:           rgba(255, 255, 255, 0.75);
+        text-shadow:     0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+        text-align:      right;
+    }
 
-footer a:hover {
-    text-decoration:  none;
-    color:           rgba(206, 146, 0, 0.5);
-    transition:      color 0.5s;
-}
+        footer a {
+            text-decoration:  none;
+            font-size:        1.5rem;
+            letter-spacing:   0.15rem;
+            letter-spacing:   0.15rem;
+            color:            rgba(206, 146, 0, 1);
+        }
+
+        footer a:hover {
+            text-decoration:  none;
+            color:            rgba(139, 0, 0, 0.75);
+            transition:       color 0.5s;
+        }
 
 
 /* ======================================================================== *\
@@ -336,22 +345,84 @@ footer a:hover {
 \* ======================================================================== */
 
 @media (max-width: 768px) {
-    .control-panel {
-        width:  90vw;
-        height: 22vw;
+    header {
+        width:   100%;
+        height:  10vh;
     }
 
-    #myCanvas {
-        width:   90vw;
-        height:  90vw;
+        .header-logo {
+            width:   10vh;
+            height:  10vh;
+        }
+
+        .header-text {
+            font-size:       2.1em;
+            font-weight:     bold;
+            letter-spacing:  0.21em;
+            color:           rgba(206, 146, 0, 1);
+            text-shadow:     0.42em 0.42em 0.42em rgba(0, 0, 0, 1), -0.1em -0.1em black;
+            text-align:      left;
+        }
+
+    main {
+        width:   100%;
+        height:  100%;
     }
 
-    .dropdown-content {
-        width:      90vw;
-        max-height:  0;
+        .control-panel {
+            width:  90vw;
+            height: 22vw;
+        }
+
+            .counter-number,
+            .timer-number {
+                font-size:         1.5rem;
+                font-weight:       bold;
+                letter-spacing:    0.15rem;
+                line-height:       1rem;
+                color:             rgba(206, 146, 0, 1);
+                text-shadow:       0.1rem 0.1rem 0.15rem black, -0.1rem -0.1rem black;
+            }
+
+            .button-text,
+            .select-text {
+                font-size:         1rem;
+                font-weight:       bold;
+                letter-spacing:    0.1rem;
+                line-height:       0.5rem;
+                color:             rgba(255, 255, 255, 0.75);
+                text-shadow:       0.1rem 0.1rem 0.15rem black, -0.1rem -0.1rem black;
+            }
+
+        .dropdown-content {
+            position:    absolute;
+            top:         calc(2vh + 22vw);
+            left:        0;
+    
+            width:       90vw;
+            max-height:  0;
+        }
+            .dropdown-content.show {
+                display:     block;
+                max-height:  90vw;
+            }
+
+        #myCanvas {
+            width:   90vw;
+            height:  90vw;
+        }
+
+    footer {
+        width:   100%;
+        height:  8vh;
     }
-        .dropdown-content.show {
-            display:     block;
-            max-height:  90vw;
+
+        .footer-text {
+            font-size:       1.5rem;
+            font-weight:     bold;
+            letter-spacing:  0.15rem;
+            color:           rgba(255, 255, 255, 0.75);
+            text-shadow:     0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+            text-align:      right;
         }
 }
