@@ -12,20 +12,21 @@
 \* ======================================================================== */
   
 html, body {
-    width:            100%;
-    height:           100%;
-    margin:           0;
-    padding:          0;
+    width:        100%;
+    height:       100%;
+    margin:       0;
+    padding:      0;
 
-    font-family:     'Caveat', sans-serif;
-
-    display:          flex;
-    flex-direction:   column;
-    align-items:      center;
-    justify-content:  center;
+    font-family:  'Caveat', sans-serif;
+    font-size:    16px;
 }
   
 body {
+    display:              flex;
+    flex-direction:       column;
+    align-items:          center;
+    justify-content:      center;
+
     background-image:     url("../assets/wooden_background.png");
     background-size:      cover;
     background-repeat:    no-repeat;
@@ -54,7 +55,7 @@ header {
 
     .header-logo {
         width:              10vh;
-        height:             10vh;
+        height:             100%;
 
         background-image:   url('../assets/logo.png');
         background-size:    contain;
@@ -62,9 +63,9 @@ header {
     }
 
     .header-text {
-        font-size:       3em;
+        font-size:       2.5em;  
         font-weight:     bold;
-        letter-spacing:  0.3em;
+        letter-spacing:  0.1em;
         color:           rgba(206, 146, 0, 1);
         text-shadow:     0.6em 0.6em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
         text-align:      left;
@@ -82,7 +83,7 @@ main {
     justify-content:  center;
 
     width:            100%;
-    height:           100%;
+    height:           92vh;
     padding-top:      2vh;
 }
 
@@ -209,12 +210,12 @@ main {
             border-radius:     1vh;
 
             font-family:       'Caveat', sans-serif;
-            font-size:         1.25rem;
+            font-size:         1.25em;
             font-weight:       bold;
-            letter-spacing:    0.125rem;
+            letter-spacing:    0.125em;
             line-height:       100%;
             color:             rgba(255, 255, 255, 0.75);
-            text-shadow:       0.125rem 0.125rem 0.125rem black, -0.1rem -0.1rem black;
+            text-shadow:       0.125em 0.125em 0.125em black, -0.1em -0.1em black;
         }
 
 
@@ -293,7 +294,7 @@ main {
     #myCanvas {
         width:             30vw;
         height:            30vw;
-        order:             2px solid black;
+        border:            0.1vh solid black;
         background-color:  #ccc;
     }
 
@@ -317,19 +318,19 @@ footer {
 }
 
     .footer-text {
-        font-size:       1.5rem;
+        font-size:       1.rem;
         font-weight:     bold;
-        letter-spacing:  0.15rem;
+        letter-spacing:  0.15em;
         color:           rgba(255, 255, 255, 0.75);
-        text-shadow:     0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+        text-shadow:     0.3em 0.3em 0.3em rgba(68, 68, 68, 1), -0.1em -0.1em black;
         text-align:      right;
     }
 
         footer a {
             text-decoration:  none;
-            font-size:        1.5rem;
-            letter-spacing:   0.15rem;
-            letter-spacing:   0.15rem;
+            font-size:        1.5em;
+            letter-spacing:   0.15em;
+            letter-spacing:   0.15em;
             color:            rgba(206, 146, 0, 1);
         }
 
@@ -352,45 +353,18 @@ footer {
 
         .header-logo {
             width:   10vh;
-            height:  10vh;
-        }
-
-        .header-text {
-            font-size:       2.1em;
-            font-weight:     bold;
-            letter-spacing:  0.21em;
-            color:           rgba(206, 146, 0, 1);
-            text-shadow:     0.42em 0.42em 0.42em rgba(0, 0, 0, 1), -0.1em -0.1em black;
-            text-align:      left;
+            height:  100%;
         }
 
     main {
         width:   100%;
-        height:  100%;
+        height:  92vh;
     }
 
         .control-panel {
             width:  90vw;
             height: 22vw;
         }
-
-            .counter-number,
-            .timer-number {
-                font-size:         8.8vw;
-                font-weight:       bold;
-                letter-spacing:    0.88vw;
-                color:             rgba(206, 146, 0, 1);
-                text-shadow:       0.1rem 0.1rem 0.15rem black, -0.1rem -0.1rem black;
-            }
-
-            .button-text,
-            .select-text {
-                font-size:         4.4vw;
-                font-weight:       bold;
-                letter-spacing:    0.44vw;
-                color:             rgba(255, 255, 255, 0.75);
-                text-shadow:       0.1rem 0.1rem 0.15rem black, -0.1rem -0.1rem black;
-            }
 
         .dropdown-content {
             position:    absolute;
@@ -414,13 +388,4 @@ footer {
         width:   100%;
         height:  8vh;
     }
-
-        .footer-text {
-            font-size:       1.5rem;
-            font-weight:     bold;
-            letter-spacing:  0.15rem;
-            color:           rgba(255, 255, 255, 0.75);
-            text-shadow:     0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
-            text-align:      right;
-        }
 }
