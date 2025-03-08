@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {                // Az 
         });
 
 
-    /*dropdownContent.style.transition = 'opacity 3s ease-in-out';  // Az áttűnési idő beállítása
+    dropdownContent.style.transition = 'opacity 3s ease-in-out';  // Az áttűnési idő beállítása
     dropdownContent.style.opacity = 0;                            // Az átlátszóság beállítása
     setTimeout(() => {                                            // Időzítés
         dropdownContent.style.opacity = 1;                        // Az átlátszóság beállítása
