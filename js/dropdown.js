@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {                // Az 
     });
 
     
-    fetch('page/minesweeper-page.html')                                                // Az oldal tartalmának betöltése
+    fetch('page/game-page.html')                                                // Az oldal tartalmának betöltése
         .then(response => {                                                            // Az oldal tartalmának betöltése
             if (!response.ok) {                                                        // Ha nem sikerült az oldal betöltése
                 throw new Error(`HTTP hiba! Status: ${response.status}`);              // Hibaüzenet a konzolra
