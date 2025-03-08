@@ -29,8 +29,8 @@ that he/she wants to play a new game.
 In the game, the player has the option to end the game if the player
 has won or lost.
 
-    Good luck and have fun !
+       Good luck and have fun !
     Thank you for your attention !
-                                                     Best regard : VMJ
+         Best regard : VMJ
 
                                                      
