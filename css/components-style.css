@@ -15,26 +15,13 @@ html, body {
 \* ======================================================================== */
 
 .header-text {
-    font-size:       3em;  
+    font-size:       clamp(2rem, 4vw, 3em);
     font-weight:     bold;
-    letter-spacing:  0.3em;
+    letter-spacing:  clamp(0.2rem, 0.4vw, 0.3em);
     line-height:     10vh;
     color:           rgba(206, 146, 0, 1); 
-    text-shadow:     0.6em 0.6em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
+    text-shadow:     0.3em 0.3em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
     text-align:      left;
-}
-
-@media screen and (max-width: 768px) {
-    .header-text {
-        font-size:       2em;  
-        font-weight:     bold;
-        letter-spacing:  0.1em;
-        line-height:     10vh;
-        color:           rgba(206, 146, 0, 1);
-        text-shadow:     0.4em 0.4em 0.4em rgba(0, 0, 0, 1), -0.1em -0.1em black;
-        text-align:      left;
-    }
-    
 }
 
 
@@ -55,21 +42,11 @@ html, body {
         \* ======================================================================== */
 
         #mine-count, #time {
-            font-size:         2.4em;
+            font-size:         clamp(2rem, 3.2vw, 2.4em);
             font-weight:       bold;
-            letter-spacing:    0.24em;
+            letter-spacing:    Clamp(0.2rem, 0.32vw, 0.24em);
             color:             rgba(206, 146, 0, 1);
             text-shadow:       0.24rem 0.24rem 0.36rem black, -0.1rem -0.1rem black;
-        }
-
-        @media screen and (max-width: 768px) {
-            #mine-count, #time {
-                font-size:         2.1em;
-                font-weight:       bold;
-                letter-spacing:    0.21em;
-                color:             rgba(206, 146, 0, 1);
-                text-shadow:       0.21rem 0.21rem 0.32rem black, -0.1rem -0.1rem black;
-            }
         }
 
 
@@ -80,9 +57,9 @@ html, body {
         .button-text,
         .select-text {
             font-family:     'Caveat', sans-serif;
-            font-size:       1.25em;
+            font-size:       clamp(1rem, 1.5vw, 1.25em);
             font-weight:     bold;
-            letter-spacing:  0.125em;
+            letter-spacing:  clamp(0.1rem, 0.15vw, 0.125em);
             color:           rgba(255, 255, 255, 0.75);
             text-shadow:     0.125rem 0.125rem 0.25rem black, -0.1rem -0.1rem black;
         }
@@ -93,25 +70,6 @@ html, body {
                 filter:           brightness(1.4);
                 transition:       filter 0.5s;
             }
-
-        @media screen and (max-width: 768px) {
-            .button-text,
-            .select-text {
-                font-family:     'Caveat', sans-serif;
-                font-size:       1em;
-                font-weight:     bold;
-                letter-spacing:  0.1em;
-                color:           rgba(255, 255, 255, 0.75);
-                text-shadow:     0.1rem 0.1rem 0.2rem black, -0.1rem -0.1rem black;
-            }
-            
-                .button-text:hover,
-                .select-text:hover {
-                    text-decoration:  none;
-                    filter:           brightness(1.4);
-                    transition:       filter 0.5s;
-                }
-        }
 
 
         /* ======================================================================== *\
@@ -124,54 +82,35 @@ html, body {
 
         .game-page {
             text-align:       center;
-
-            font-size:        1.5rem;
-            font-weight:      bold;
-            letter-spacing:   0.15rem;
-            color:            rgba(255, 255, 255, 0.75);
-            text-shadow:      0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
         }
-
-            .game-page a {
-                cursor:           pointer;
-                text-decoration:  none;
-                color:            rgba(255, 255, 0, 0.75);
-                text-shadow:      0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
-            }
-
-            .game-page a:hover {
-                cursor:           pointer;
-                text-decoration:  none;
-                color:            rgba(139, 0, 0, 0.75);
-                transition:       color 1s;
-            }
 
             /* ======================================================================== *\
                D R O P D O W N  -  I T E M S
             \* ======================================================================== */
 
             h3 {
-                margin:          1.5rem 0rem 0.5rem 0rem;
-                font-size:       1.5rem;
+                margin:           1.5rem 0rem 0.5rem 0rem;
+
+                font-size:       clamp(1.2rem, 2.4vw, 1.8em);
                 font-weight:     bold;
-                letter-spacing:  0.15rem;
+                letter-spacing:  clamp(0.12rem, 0.24vw, 0.18em);
                 color:           rgba(255, 255, 255, 0.75);
-                text-shadow:     0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+                text-shadow:     0.25em 0.25em 0.25em rgba(68, 68, 68, 1), -0.1em -0.1em black;
             }
 
             p {
-                font-size:       1.25rem;
-                letter-spacing:  0.125rem;
+                font-size:       clamp(1rem, 2vw, 1.5em);
+                letter-spacing:  clamp(0.1rem, 0.2vw, 0.15em);
                 color:           rgba(255, 255, 255, 0.75);
-                text-shadow:     0.1rem 0.1rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+                text-shadow:     -0.1em -0.1em black;
             }
 
             a {
                 text-decoration:  none;
-                font-size:        2rem;
-                letter-spacing:   0.2rem;
-                color:            rgba(255, 255, 255, 0.75);
-                text-shadow:      1px 1px 2px black;
+                font-size:        clamp(1.5rem, 2vw, 1.5em);
+                letter-spacing:   clamp(0.15rem, 0.2vw, 0.15em);
+                color:            rgba(206, 146, 0, 0.75);
+                text-shadow:      0.1rem 0.1rem 0.1rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
             }
 
                 a:hover {
@@ -190,18 +129,17 @@ html, body {
 \* ======================================================================== */
 
 .footer-text {
-    font-size:       1.25em;
+    font-size:       clamp(1rem, 2vw, 1.5em);
     font-weight:     bold;
-    letter-spacing:  0.125em;
+    letter-spacing:  clamp(0.1rem, 0.2vw, 0.15em);
     color:           rgba(255, 255, 255, 0.75);
     text-shadow:     0.25em 0.25em 0.25em rgba(68, 68, 68, 1), -0.1em -0.1em black;
-    text-align:      right;
 }
 
     footer a {
         text-decoration:  none;
-        font-size:        1.5em;
-        letter-spacing:   0.15em;
+        font-size:        clamp(1.5rem, 2vw, 1.5em);
+        letter-spacing:   clamp(0.15rem, 0.2vw, 0.15em);
         color:            rgba(206, 146, 0, 1);
     }
 
@@ -210,18 +148,6 @@ html, body {
         color:            rgba(139, 0, 0, 0.75);
         transition:       color 0.5s;
     }
-
-@media screen and (max-width: 768px) {
-    .footer-text {
-        font-size:       1em;
-        font-weight:     bold;
-        letter-spacing:  0.1em;
-        color:           rgba(255, 255, 255, 0.75);
-        text-shadow:     0.2em 0.2em 0.2em rgba(68, 68, 68, 1), -0.1em -0.1em black;
-        text-align:      right;
-    }
-    
-}
 
 
 /* ======================================================================== *\

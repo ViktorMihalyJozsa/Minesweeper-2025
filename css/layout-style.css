@@ -237,14 +237,16 @@ main {
     \* ======================================================================== */
 
     #myCanvas {
-        width:             30vw;
-        height:            auto;
+        width:      30vw;
+        height:     auto;
+        max-width:  600px;
     }
 
     @media screen and (max-width: 768px) {
         #myCanvas {
-            width:   80vw;
-            height:  auto;
+            width:      80vw;
+            height:     auto;
+            max-width:  600px;
         }
     }
 
@@ -257,11 +259,14 @@ footer {
 
     position:         fixed;
     bottom:           0;
-    text-align:       right;
+    
+    display:          flex;
+    justify-content:  flex-end;
+    align-items:      center;
 
     width:            100%;
     height:           8vh;
-    padding:          2vh 6vw 2vh 6vw;
+    padding:          0vh 5vw 0vh 5vw;
 }
 
 
