@@ -1,0 +1,231 @@
+/* ======================================================================== *\
+    C O M P O N E N T S - S T Y L E S - S H E E T
+\* ======================================================================== */
+/* ======================================================================== *\
+    H T M L , B O D Y - F O N T
+\* ======================================================================== */
+
+html, body {
+    font-family:  'Caveat', sans-serif;
+    font-size:    16px;
+}
+
+/* ======================================================================== *\
+    H E A D E R - T E X T
+\* ======================================================================== */
+
+.header-text {
+    font-size:       3em;  
+    font-weight:     bold;
+    letter-spacing:  0.3em;
+    line-height:     10vh;
+    color:           rgba(206, 146, 0, 1); 
+    text-shadow:     0.6em 0.6em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
+    text-align:      left;
+}
+
+@media screen and (max-width: 768px) {
+    .header-text {
+        font-size:       2em;  
+        font-weight:     bold;
+        letter-spacing:  0.1em;
+        line-height:     10vh;
+        color:           rgba(206, 146, 0, 1);
+        text-shadow:     0.4em 0.4em 0.4em rgba(0, 0, 0, 1), -0.1em -0.1em black;
+        text-align:      left;
+    }
+    
+}
+
+
+/* ======================================================================== *\
+   M A I N
+\* ======================================================================== */
+
+    /* ======================================================================== *\
+       C O N T R O L - P A N E L  
+    \* ======================================================================== */
+
+        /* ======================================================================== *\
+           B U T T O N - S T Y L I N G
+        \* ======================================================================== */
+
+        /* ======================================================================== *\
+           C O U N T E R   A N D   T I M E R - S T Y L I N G
+        \* ======================================================================== */
+
+        #mine-count, #time {
+            font-size:         2.4em;
+            font-weight:       bold;
+            letter-spacing:    0.24em;
+            color:             rgba(206, 146, 0, 1);
+            text-shadow:       0.24rem 0.24rem 0.36rem black, -0.1rem -0.1rem black;
+        }
+
+        @media screen and (max-width: 768px) {
+            #mine-count, #time {
+                font-size:         2.1em;
+                font-weight:       bold;
+                letter-spacing:    0.21em;
+                color:             rgba(206, 146, 0, 1);
+                text-shadow:       0.21rem 0.21rem 0.32rem black, -0.1rem -0.1rem black;
+            }
+        }
+
+
+        /* ======================================================================== *\
+            B U T T O N  A N D  S E L E C T - S T Y L I N G
+        \* ======================================================================== */
+
+        .button-text,
+        .select-text {
+            font-family:     'Caveat', sans-serif;
+            font-size:       1.25em;
+            font-weight:     bold;
+            letter-spacing:  0.125em;
+            color:           rgba(255, 255, 255, 0.75);
+            text-shadow:     0.125rem 0.125rem 0.25rem black, -0.1rem -0.1rem black;
+        }
+
+            .button-text:hover,
+            .select-text:hover {
+                text-decoration:  none;
+                filter:           brightness(1.4);
+                transition:       filter 0.5s;
+            }
+
+        @media screen and (max-width: 768px) {
+            .button-text,
+            .select-text {
+                font-family:     'Caveat', sans-serif;
+                font-size:       1em;
+                font-weight:     bold;
+                letter-spacing:  0.1em;
+                color:           rgba(255, 255, 255, 0.75);
+                text-shadow:     0.1rem 0.1rem 0.2rem black, -0.1rem -0.1rem black;
+            }
+            
+                .button-text:hover,
+                .select-text:hover {
+                    text-decoration:  none;
+                    filter:           brightness(1.4);
+                    transition:       filter 0.5s;
+                }
+        }
+
+
+        /* ======================================================================== *\
+            S E C T I O N  -  C O N T E N T
+        \* ======================================================================== */
+
+        /* ======================================================================== *\
+            G A M E - P A G E
+        \* ======================================================================== */
+
+        .game-page {
+            text-align:       center;
+
+            font-size:        1.5rem;
+            font-weight:      bold;
+            letter-spacing:   0.15rem;
+            color:            rgba(255, 255, 255, 0.75);
+            text-shadow:      0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+        }
+
+            .game-page a {
+                cursor:           pointer;
+                text-decoration:  none;
+                color:            rgba(255, 255, 0, 0.75);
+                text-shadow:      0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+            }
+
+            .game-page a:hover {
+                cursor:           pointer;
+                text-decoration:  none;
+                color:            rgba(139, 0, 0, 0.75);
+                transition:       color 1s;
+            }
+
+            /* ======================================================================== *\
+               D R O P D O W N  -  I T E M S
+            \* ======================================================================== */
+
+            h3 {
+                margin:          1.5rem 0rem 0.5rem 0rem;
+                font-size:       1.5rem;
+                font-weight:     bold;
+                letter-spacing:  0.15rem;
+                color:           rgba(255, 255, 255, 0.75);
+                text-shadow:     0.3rem 0.3rem 0.3rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+            }
+
+            p {
+                font-size:       1.25rem;
+                letter-spacing:  0.125rem;
+                color:           rgba(255, 255, 255, 0.75);
+                text-shadow:     0.1rem 0.1rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+            }
+
+            a {
+                text-decoration:  none;
+                font-size:        2rem;
+                letter-spacing:   0.2rem;
+                color:            rgba(255, 255, 255, 0.75);
+                text-shadow:      1px 1px 2px black;
+            }
+
+                a:hover {
+                    text-decoration:  none;
+                    color:            rgba(139, 0, 0, 0.75);
+                    transition:       color 0.5s;
+                }
+
+
+    /* ======================================================================== *\
+        C A N V A S  -  F O R  M I N E S W E E P E R
+    \* ======================================================================== */
+
+/* ======================================================================== *\
+    F O O T E R
+\* ======================================================================== */
+
+.footer-text {
+    font-size:       1.25em;
+    font-weight:     bold;
+    letter-spacing:  0.125em;
+    color:           rgba(255, 255, 255, 0.75);
+    text-shadow:     0.25em 0.25em 0.25em rgba(68, 68, 68, 1), -0.1em -0.1em black;
+    text-align:      right;
+}
+
+    footer a {
+        text-decoration:  none;
+        font-size:        1.5em;
+        letter-spacing:   0.15em;
+        color:            rgba(206, 146, 0, 1);
+    }
+
+    footer a:hover {
+        text-decoration:  none;
+        color:            rgba(139, 0, 0, 0.75);
+        transition:       color 0.5s;
+    }
+
+@media screen and (max-width: 768px) {
+    .footer-text {
+        font-size:       1em;
+        font-weight:     bold;
+        letter-spacing:  0.1em;
+        color:           rgba(255, 255, 255, 0.75);
+        text-shadow:     0.2em 0.2em 0.2em rgba(68, 68, 68, 1), -0.1em -0.1em black;
+        text-align:      right;
+    }
+    
+}
+
+
+/* ======================================================================== *\
+
+    R E S P O N S I V E - D E S I G N - 7 6 8  P I X E L S
+
+\* ======================================================================== */
