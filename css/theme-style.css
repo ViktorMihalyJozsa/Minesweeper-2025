@@ -6,10 +6,10 @@
 \* ======================================================================== */
 
 body {
-    background-image:       url("../assets/wooden_background.webp");
-    background-size:        cover;
-    background-repeat:      no-repeat;
-    background-position:    center;
+    background-image:     url("../assets/wooden_background.webp");
+    background-size:      cover;
+    background-repeat:    no-repeat;
+    background-position:  center;
 }
 
 
@@ -22,10 +22,10 @@ header {
 }
 
     .header-logo {
-        background-image:   url('../assets/logo.webp');
-        background-size:    contain;
-        background-repeat:  no-repeat;
-        background-position: center;
+        background-image:     url('../assets/logo.webp');
+        background-size:      contain;
+        background-repeat:    no-repeat;
+        background-position:  center;
     }
 
 
