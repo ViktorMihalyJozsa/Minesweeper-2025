@@ -5,22 +5,22 @@
 \*  ========================================================================  */
 
 document.addEventListener('DOMContentLoaded', function() {                // Az oldal betöltődése után fut le
-    const textContainer = document.querySelector('.text-container');      // Az első olyan elem, amihez tartozik a text-container osztály
-    const dropdownContent = document.getElementById('dropdown-content');  // Az elem, amiben a tartalom lesz
+    const textContainer = document.getElementById('button');                  // Az első olyan elem, amihez tartozik a text-container osztály
+    const dropdownContent = document.getElementById('dropdown-content');      // Az elem, amiben a tartalom lesz
 
     if (!textContainer || !dropdownContent) {                                          // Ha valamelyik elem nem létezik, akkor hibaüzenet és kilépés
-        console.error('Hiba: Nem található a textContainer vagy a dropdownContent!');  // Hibauzenet a konzolra
-        return;                                                                        // Kilépés a függvényből
+        console.error('Hiba: Nem található a textContainer vagy a dropdownContent!');      // Hibauzenet a konzolra
+        return;                                                                            // Kilépés a függvényből
     }  
 
     textContainer.addEventListener('click', function(event) {  // Kattintásra
-        dropdownContent.classList.toggle('show');              // A tartalom megjelenítése vagy elrejtése
-        event.stopPropagation();                               // Az esemény továbbterjedésének megakadályozása
+        dropdownContent.classList.toggle('show');                  // A tartalom megjelenítése vagy elrejtése
+        event.stopPropagation();                                   // Az esemény továbbterjedésének megakadályozása
     });
 
     document.addEventListener('click', function(event) {                                         // Kattintásra az oldalon
-        if (!textContainer.contains(event.target) && !dropdownContent.contains(event.target)) {  // Ha sem a textContainer, sem a dropdownContent nem tartalmazza a kattintott elemet
-            dropdownContent.classList.remove('show');                                            // A tartalom elrejtése
+        if (!textContainer.contains(event.target) && !dropdownContent.contains(event.target)) {      // Ha sem a textContainer, sem a dropdownContent nem tartalmazza a kattintott elemet
+            dropdownContent.classList.remove('show');                                                // A tartalom elrejtése
         }
     });
 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {                // Az 
     dropdownContent.style.transition = 'opacity 3s ease-in-out';  // Az áttűnési idő beállítása
     dropdownContent.style.opacity = 0;                            // Az átlátszóság beállítása
     setTimeout(() => {                                            // Időzítés
-        dropdownContent.style.opacity = 1;                        // Az átlátszóság beállítása
+        dropdownContent.style.opacity = 1;                            // Az átlátszóság beállítása
     }, 3000);                                                     // 3 másodperc múlva*/
 
 });

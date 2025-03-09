@@ -89,8 +89,6 @@ main {
 
         .counter-container,
         .timer-container {
-            text-align:           center;
-
             background-image:     url("../assets/counter.png");
             background-size:      cover;
             background-repeat:    no-repeat;
@@ -99,15 +97,26 @@ main {
 
 
         /* ======================================================================== *\
-            T E X T  A N D  S E L E C T - S T Y L I N G
+            B U T T O N  A N D  S E L E C T - S T Y L I N G
         \* ======================================================================== */
+
+        button,
+        select {
+            cursor:             pointer;
+            text-decoration:    none;
+            text-align:         center;
+
+            background-color:  rgba(206, 146, 0, 0.9);
+            border:            0.1vh solid black;
+            border-radius:     1vh;
+        }
 
 
         /* ======================================================================== *\
-            D R O P D O W N  -  C O N T E N T
+            S E C T I O N  -  C O N T E N T
         \* ======================================================================== */
 
-        .dropdown-content {
+        section {
             background-color:  rgba(206, 146, 0, 0.9);
         }
 
