@@ -19,30 +19,12 @@ html, body {
     width:    100%;  /* A képernyő szélessége */
 }
 
-/* Kényszerítjük, hogy a játék konténer mindig álló orientációban legyen */
 body {
-    display:           flex;    /* Flexbox */
-    justify-content:   center;  /* Középre igazítjuk */
-    align-items:       center;  /* Középre igazítjuk */
-    height:            100vh;   /* A képernyő magassága */
-    width:             100vw;   /* A képernyő szélessége */
-    transform-origin:  center;  /* Az elforgatás középre igazítása */
-    overflow:          hidden;  /* Nem engedjük a görgetést */
-}
-
-/* Ha a képernyő szélessége 800px vagy kisebb (mobil/tablet) */
-/* akkor elforgatjuk az egész játékot */
-@media screen and (max-width: 800px) {
-    body {
-        transform:         rotate(0deg);  /* Elforgatjuk az egész játékot */
-        transform-origin:  center;         /* Az elforgatás középre igazítása */
-        display:           flex;           /* Flexbox */
-        justify-content:   center;         /* Középre igazítjuk */
-        align-items:       center;         /* Középre igazítjuk */
-        height:            100vh;          /* Az oldal mindig a portrait módhoz igazodik */
-        width:             100vw;          /* Az oldal mindig a portrait módhoz igazodik */
-        overflow:          hidden;         /* Nem engedjük a görgetést */
-    }
+    display:          flex;    /* Flexbox */
+    justify-content:  center;  /* Középre igazítjuk */
+    align-items:      center;  /* Középre igazítjuk */
+    flex-direction:   column;  /* Oszlop irányú elrendezés */
+    overflow:         hidden;  /* Nem engedjük a görgetést */
 }
 
 
