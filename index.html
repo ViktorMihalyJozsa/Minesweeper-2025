@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Minesweeper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Viktor M Jozsa - Web developer, Junior frontend programmer">
     <meta name="author" content="Viktor M Jozsa">
+    <meta name="description" 
+          content="Játssz egy szórakoztató és kihívást jelentő aknakereső játékot online! 
+                   Viktor M Jozsa webfejlesztőként készítette ezt a klasszikus játékot.">
     <link rel="icon" type="image/webp" href="assets/favicon.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" 
           integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" 
@@ -24,21 +26,37 @@
         <div class="header-text">MINESWEEPER</div>
     </header>
     <main>
-        <div id="control-panel" class="control-panel">
-            <span id="mine-count" class="counter-container ui-element">000</span>
-            <button id="button" class="button-text ui-element" type="button">GAME</button>
-            <img id="action-button" alt="Action Button" class="button-container ui-element">
-            <span id="time" class="timer-container ui-element">000</span>
+        <div id="control-panel" class="ui-element">
+            <span id="mine-count" class="counter-text ui-element">000</span>
+            <span id="game-page" class="game-text ui-element">GAME</span>
+            <img id="action-button" class="button-image ui-element" src="assets/button-start.png" alt="Restart Button">
+            <span id="time" class="timer-text ui-element">000</span>
             <select id="difficulty" class="select-text ui-element">
                 <option value="easy">EASY</option>
                 <option value="medium">MEDIUM</option>
                 <option value="hard">HARD</option>
-            </select>
+            </select>            
             <section id="dropdown-content" class="ui-element">
                 <!-- Content from page/minesweeper-page.html will be loaded here -->
             </section>
         </div>
-        <canvas id="myCanvas" class="ui-element"></canvas>
+        <canvas id="myCanvas" class="ui-element" aria-label="Minesweeper game board"></canvas>
+            <img id="hidden" src="assets/hidden.png" alt="Hidden icon" style="display: none;">
+            <img id="mine" src="assets/mine.png" alt="Mine icon" style="display: none;">
+            <img id="exploded-mine" src="assets/exploded-mine.png" alt="Exploded Mine" style="display: none;">
+            <img id="field-0" src="assets/0.png" alt="Field 0 icon" style="display: none;">
+            <img id="field-1" src="assets/1.png" alt="Field 1 icon" style="display: none;">
+            <img id="field-2" src="assets/2.png" alt="Field 2 icon" style="display: none;">
+            <img id="field-3" src="assets/3.png" alt="Field 3 icon" style="display: none;">
+            <img id="field-4" src="assets/4.png" alt="Field 4 icon" style="display: none;">
+            <img id="field-5" src="assets/5.png" alt="Field 5 icon" style="display: none;">
+            <img id="field-6" src="assets/6.png" alt="Field 6 icon" style="display: none;">
+            <img id="field-7" src="assets/7.png" alt="Field 7 icon" style="display: none;">
+            <img id="field-8" src="assets/8.png" alt="Field 8 icon" style="display: none;">
+            <img id="flag" src="assets/flag.png" alt="Flag icon" style="display: none;">
+            <img id="flagged-wrong" src="assets/flagged-wrong.png" alt="Flagged Wrong icon" style="display: none;">
+        <script src="js/minesweeper.js" defer></script>
+        <script src="js/dropdown.js" defer></script>
     </main>
     <footer>
         <span class="footer-text">Best regards from:
@@ -46,21 +64,5 @@
             ~ 2025
         </span>
     </footer>
-    <img id="hidden" src="assets/hidden.png" alt="Hidden icon" style="display: none;">
-    <img id="mine" src="assets/mine.png" alt="Mine icon" style="display: none;">
-    <img id="exploded-mine" src="assets/exploded-mine.png" alt="Exploded Mine" style="display: none;">
-    <img id="field-0" src="assets/0.png" alt="Field 0 icon" style="display: none;">
-    <img id="field-1" src="assets/1.png" alt="Field 1 icon" style="display: none;">
-    <img id="field-2" src="assets/2.png" alt="Field 2 icon" style="display: none;">
-    <img id="field-3" src="assets/3.png" alt="Field 3 icon" style="display: none;">
-    <img id="field-4" src="assets/4.png" alt="Field 4 icon" style="display: none;">
-    <img id="field-5" src="assets/5.png" alt="Field 5 icon" style="display: none;">
-    <img id="field-6" src="assets/6.png" alt="Field 6 icon" style="display: none;">
-    <img id="field-7" src="assets/7.png" alt="Field 7 icon" style="display: none;">
-    <img id="field-8" src="assets/8.png" alt="Field 8 icon" style="display: none;">
-    <img id="flag" src="assets/flag.png" alt="Flag icon" style="display: none;">
-    <img id="flagged-wrong" src="assets/flagged-wrong.png" alt="Flagged Wrong icon" style="display: none;">
-    <script src="js/minesweeper.js" defer></script>
-    <script src="js/dropdown.js" defer></script>
 </body>
 </html>

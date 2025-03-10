@@ -2,49 +2,62 @@
 
     D O P D O W N  M E N Ü  -  J a v a S c r i p t
 
+    A dropdown.js fájl a játék oldalának lenyíló menüjét kezeli.
+
+    A fájl tartalma:
+    - Eseménykezelők hozzáadása a kattintáshoz
+    - Az oldal tartalmának betöltése
+    - Animáció beállítása
+
+    A fájlhoz tartozó CSS:
+    - css/d
+    - css/dropdown.css
+
+    A fájlhoz tartozó HTML:
+    - page/game-page.html
+
 \*  ========================================================================  */
 
-document.addEventListener('DOMContentLoaded', function() {                // Az oldal betöltődése után fut le
-    const textContainer = document.getElementById('button');                  // Az első olyan elem, amihez tartozik a text-container osztály
-    const dropdownContent = document.getElementById('dropdown-content');      // Az elem, amiben a tartalom lesz
+document.addEventListener('DOMContentLoaded', function() {                                   // Az oldal betöltődése után fut le
+    const textContainer = document.getElementById('game-page');                                  // A kattintható elem
+    const dropdownContent = document.getElementById('dropdown-content');                         // A lenyíló tartalom
 
-    if (!textContainer || !dropdownContent) {                                          // Ha valamelyik elem nem létezik, akkor hibaüzenet és kilépés
-        console.error('Hiba: Nem található a textContainer vagy a dropdownContent!');      // Hibauzenet a konzolra
-        return;                                                                            // Kilépés a függvényből
-    }  
+    if (!textContainer || !dropdownContent) {                                                    // Ellenőrzés, hogy a szükséges elemek léteznek-e
+        console.error('Hiba: Nem található a textContainer vagy a dropdownContent!');                // Hibakiírás a konzolra
+        return;                                                                                      // Kilépés
+    }                                                                                            // Ha minden rendben, folytatódik a kód
 
-    textContainer.addEventListener('click', function(event) {  // Kattintásra
-        dropdownContent.classList.toggle('show');                  // A tartalom megjelenítése vagy elrejtése
-        event.stopPropagation();                                   // Az esemény továbbterjedésének megakadályozása
-    });
+    textContainer.addEventListener('click', function(event) {                                    // Eseménykezelő hozzáadása a kattintáshoz
+        dropdownContent.classList.toggle('show');                                                    // A lenyíló tartalom megjelenítése vagy elrejtése
+        event.stopPropagation();                                                                     // Az esemény továbbterjedésének megakadályozása
+    });                                                                                          // Az eseménykezelő befejezése
 
-    document.addEventListener('click', function(event) {                                         // Kattintásra az oldalon
-        if (!textContainer.contains(event.target) && !dropdownContent.contains(event.target)) {      // Ha sem a textContainer, sem a dropdownContent nem tartalmazza a kattintott elemet
-            dropdownContent.classList.remove('show');                                                // A tartalom elrejtése
-        }
-    });
+    document.addEventListener('click', function(event) {                                         // Eseménykezelő hozzáadása a kattintáshoz
+        if (!textContainer.contains(event.target) && !dropdownContent.contains(event.target)) {      // Ha a kattintás nem a textContainer vagy a dropdownContent része
+            dropdownContent.classList.remove('show');                                                    // A lenyíló tartalom elrejtése
+        }                                                                                            // Az ellenőrzés befejezése
+    });                                                                                          // Az eseménykezelő befejezése
 
-    
-    fetch('page/game-page.html')                                                // Az oldal tartalmának betöltése
-        .then(response => {                                                            // Az oldal tartalmának betöltése
-            if (!response.ok) {                                                        // Ha nem sikerült az oldal betöltése
-                throw new Error(`HTTP hiba! Status: ${response.status}`);              // Hibaüzenet a konzolra
-            }  
-            return response.text();                                                    // Az oldal tartalmának visszaadása
-        })
-        .then(data => {                                                                // Az oldal tartalmának megjelenítése
-            dropdownContent.innerHTML = data;                                          // Az oldal tartalmának megjelenítése
-        })
-        .catch(error => {                                                              // Hiba esetén
-            console.error('Hiba a dropdown tartalmának betöltésekor:', error);         // Hibaüzenet a konzolra
-            dropdownContent.innerHTML = '<p>Nem sikerült betölteni a tartalmat.</p>';  // Hibaüzenet a felhasználónak
+    fetch('page/game-page.html')                                                                 // Az oldal tartalmának betöltése
+        .then(response => {                                                                          // A válasz feldolgozása
+            if (!response.ok) {                                                                          // Ha a válasz nem rendben
+                throw new Error(`HTTP hiba! Status: ${response.status}`);                                    // Hibaüzenet dobása
+            }                                                                                            // Az ellenőrzés befejezése
+            return response.text();                                                                      // A válasz szövegének visszaadása
+        })                                                                                           // A válasz feldolgozásának befejezése
+        .then(data => {                                                                          // A szöveg feldolgozása
+            dropdownContent.innerHTML = data;                                                        // A szöveg beillesztése a lenyíló tartalomba
+            dropdownContent.style.opacity = 1;                                                       // Az animáció elindítása
+        })                                                                                       // A szöveg feldolgozásának befejezése
+        .catch(error => {                                                                        // Hiba esetén
+            console.error('Hiba a dropdown tartalmának betöltésekor:', error);                       // Hibakiírás a konzolra
+            dropdownContent.innerHTML = '<p>Nem sikerült betölteni a tartalmat.</p>';                // Hibaüzenet megjelenítése
         });
 
-
-    dropdownContent.style.transition = 'opacity 3s ease-in-out';  // Az áttűnési idő beállítása
-    dropdownContent.style.opacity = 0;                            // Az átlátszóság beállítása
-    setTimeout(() => {                                            // Időzítés
-        dropdownContent.style.opacity = 1;                            // Az átlátszóság beállítása
-    }, 3000);                                                     // 3 másodperc múlva*/
-
+    dropdownContent.style.transition = 'opacity 3s ease-in-out';                                 // Animáció beállítása
+    dropdownContent.style.opacity = 0;                                                           // Az animáció csak akkor indul, ha a tartalom betöltődött
 });
+
+/*  ========================================================================  *\
+    E N D   O F   J A V A S C R I P T   C O D E
+\*  ========================================================================  */

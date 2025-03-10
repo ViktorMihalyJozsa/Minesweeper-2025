@@ -1,5 +1,7 @@
 /* ======================================================================== *\
+
     T H E M E  -  S T Y L E  -  S H E E T
+
 \* ======================================================================== */
 /* ======================================================================== *\
     B O D Y
@@ -33,35 +35,30 @@ header {
     M A I N
 \* ======================================================================== */
 
-main {
-    background-color:  none;
-}
-
-
     /* ======================================================================== *\
        C O N T R O L - P A N E L  
     \* ======================================================================== */
 
-    .control-panel {
+    #control-panel {
         background-color:  rgba(0, 0, 0, 0.25);
     }
 
-        .control-panel:hover {
+        #control-panel:hover {
             background-color:  rgba(0, 0, 0, 0.5);
             transition:        background-color 0.5s;
         }
 
-        .control-panel:active {
+        #control-panel:active {
             background-color:  rgba(0, 0, 0, 0.5);
             transition:        background-color 0.5s;
         }
 
 
         /* ======================================================================== *\
-           B U T T O N - S T Y L I N G
+            A C T I O N  -  B U T T O N
         \* ======================================================================== */
 
-        img {
+        .button-image {
             cursor:             pointer;
             text-decoration:    none;
 
@@ -70,25 +67,25 @@ main {
             background-repeat:  no-repeat;
         }
 
-            img:hover {
+            .button-image:hover {
                 text-decoration:  none;
-                filter:           brightness(1.4);
+                filter:           brightness(1.2);
                 transition:       filter 0.5s;
             }
 
-            img:active {
+            .button-image:active {
                 text-decoration:  none;
-                filter:           brightness(1.4);
+                filter:           brightness(1.2);
                 transition:       filter 0.5s;
             }
 
 
         /* ======================================================================== *\
-            C O U N T E R   A N D   T I M E R - S T Y L I N G
+            C O U N T E R  A N D  T I M E R
         \* ======================================================================== */
 
-        .counter-container,
-        .timer-container {
+        .counter-text,
+        .timer-text {
             background-image:     url("../assets/counter.png");
             background-size:      cover;
             background-repeat:    no-repeat;
@@ -97,14 +94,13 @@ main {
 
 
         /* ======================================================================== *\
-            B U T T O N  A N D  S E L E C T - S T Y L I N G
+            G A M E  A N D  S E L E C T I O N
         \* ======================================================================== */
 
-        button,
-        select {
-            cursor:             pointer;
-            text-decoration:    none;
-            text-align:         center;
+        .game-text,
+        .select-text {
+            cursor:            pointer;
+            text-decoration:   none;
 
             background-color:  rgba(206, 146, 0, 0.9);
             border:            0.1vh solid black;
@@ -125,12 +121,8 @@ main {
             G A M E - P A G E
         \* ======================================================================== */
 
-        /* ======================================================================== *\
-            D R O P D O W N  -  I T E M S
-        \* ======================================================================== */
-
     /* ======================================================================== *\
-       C A N V A S  -  F O R  M I N E S W E E P E R
+        C A N V A S
     \* ======================================================================== */
 
     #myCanvas {
@@ -148,7 +140,9 @@ footer {
 
 
 /* ======================================================================== *\
+    M E D I A  -  Q U E R I E S
+\* ======================================================================== */
 
-    R E S P O N S I V E - D E S I G N - 7 6 8  P I X E L S
-
+/* ======================================================================== *\
+    E N D  -  O F  -  S T Y L E  -  S H E E T
 \* ======================================================================== */
