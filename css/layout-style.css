@@ -19,12 +19,12 @@ html, body {
     width:    100%;  /* A képernyő szélessége */
 }
 
+/* Kényszerítjük, hogy a játék konténer mindig álló orientációban legyen */
 body {
-    display:          flex;    /* Flexbox */
-    justify-content:  center;  /* Középre igazítjuk */
-    align-items:      center;  /* Középre igazítjuk */
-    flex-direction:   column;  /* Oszlop irányú elrendezés */
-    overflow:         hidden;  /* Nem engedjük a görgetést */
+    display:           flex;    /* Flexbox */
+    justify-content:   center;  /* Középre igazítjuk */
+    align-items:       center;  /* Középre igazítjuk */
+    overflow:          hidden;  /* Nem engedjük a görgetést */
 }
 
 
