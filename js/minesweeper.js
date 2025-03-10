@@ -130,20 +130,24 @@ function loadDefaultGame() {
   initGame();
 }
 
-function setDifficulty(difficulty) {
-  const settings = difficultySettings[difficulty];
-  size = settings.size;
-  canvas.width = settings.columns * size;
-  canvas.height = settings.rows * size;
-  columns = settings.columns;
-  rows = settings.rows;
-  mineCount = settings.mineCount;
-  initGame();
+function setDifficulty(difficulty) {                       // Nehézségi szint beállítása
+  stopTimer();                                                 // Idő megállítása
+  timeCounter.innerText = convertNumberTo3DigitString(0);      // Idő nullázása
+
+  const settings = difficultySettings[difficulty];             // Nehézségi szint beállítások
+  size = settings.size;                                        // Méret
+  canvas.width = settings.columns * size;                      // Szélesség
+  canvas.height = settings.rows * size;                        // Magasság
+  columns = settings.columns;                                  // Oszlopok
+  rows = settings.rows;                                        // Sorok
+  mineCount = settings.mineCount;                              // Aknák
+  
+  initGame();                                                  // Játék inicializálása
 }
 
-document.getElementById('difficulty').addEventListener('change', function() {
-  const difficulty = document.getElementById('difficulty').value;
-  setDifficulty(difficulty);
+document.getElementById('difficulty').addEventListener('change', function() {  // Nehézségi szint változtatása
+  const difficulty = this.value;                                                   // Nehézségi szint
+  setDifficulty(difficulty);                                                       // Nehézségi szint beállítása
 });
 
 actionButton.addEventListener('click', function() {
@@ -153,22 +157,36 @@ actionButton.addEventListener('click', function() {
   timeCounter.innerText = convertNumberTo3DigitString(0);
 });
 
-canvas.addEventListener('click', function(event) {
-  if (isGameOver) return;
-  const x = event.offsetX;
-  const y = event.offsetY;
-  const col = Math.floor(x / size);
-  const row = Math.floor(y / size);
-  if (isFirstClick) {
-    placeMines(map, mineCount, row, col);
-    calculateFieldValues(map);
-    isFirstClick = false;
-    startTimer();
-  }
-  exploreField(row, col);
-  drawMap();
-  checkGameEnd(row, col);
-});
+
+/*  ========================================================================  *\
+      C L I C K  -  E V E N T
+\*  ========================================================================  */
+
+canvas.addEventListener('click', function(event) {  // Kattintás esemény
+  if (isGameOver) return;                               // Ha vége a játéknak, kilépünk
+
+  const rect = canvas.getBoundingClientRect();          // Vászon mérete
+  const scaleX = canvas.width / rect.width;             // Skála X
+  const scaleY = canvas.height / rect.height;           // Skála Y
+
+  const x = (event.clientX - rect.left) * scaleX;       // X
+  const y = (event.clientY - rect.top) * scaleY;        // Y
+
+  const col = Math.floor(x / size);                     // Oszlop
+  const row = Math.floor(y / size);                     // Sor
+
+  if (isFirstClick) {                                   // Első kattintás
+    placeMines(map, mineCount, row, col);                   // Aknák elhelyezése
+    calculateFieldValues(map);                              // Mező értékek kiszámítása
+    isFirstClick = false;                                   // Első kattintás
+    startTimer();                                           // Időmérő indítása
+  }                                                     // Első kattintás
+
+  exploreField(row, col);                               // Mező felfedése
+  drawMap();                                            // Térkép rajzolása
+  checkGameEnd(row, col);                               // Játék vége ellenőrzése
+});                                                 // Kattintás esemény
+
 
 canvas.addEventListener('contextmenu', function(event) {
   event.preventDefault();
@@ -235,20 +253,30 @@ function showWrongFlags() {
   }
 }
 
-function exploreField(row, col) {
-  if (!exploredMap[row][col] && !flagMap[row][col]) {
-    exploredFields++;
-    exploredMap[row][col] = true;
-    checkGameEnd(row, col);
-    if (map[row][col] === 0) {
-      let neighbourCoordinates = findNeighbourFields(map, row, col);
-      for (let i = 0; i < neighbourCoordinates.length; i++) {
-        let coordinate = neighbourCoordinates[i];
-        exploreField(coordinate.row, coordinate.col);
-      }
-    }
+
+/*  ========================================================================  *\
+      M A P  -  F U N C T I O N S
+\*  ========================================================================  */
+
+function exploreField(row, col) {                                         // Mező felfedése
+  if (row < 0 || row >= map.length || col < 0 || col >= map[0].length) {      // Ha túlmegy a határon, kilépünk
+      return;                                                                     // Kilépés
   }
-}
+  
+  if (!exploredMap[row][col] && !flagMap[row][col]) {                         // Ha még nem felfedett mező, és nincs rajta zászló
+      exploredFields++;                                                           // Felfedett mezők növelése
+      exploredMap[row][col] = true;                                               // Felfedett mező
+      checkGameEnd(row, col);                                                     // Játék vége ellenőrzése
+      if (map[row][col] === 0) {                                                  // Ha a mező 0
+          let neighbourCoordinates = findNeighbourFields(map, row, col);              // Szomszédos mezők
+          for (let i = 0; i < neighbourCoordinates.length; i++) {                     // Végigmegyünk a szomszédos mezőkön
+              let coordinate = neighbourCoordinates[i];                                   // Koordináta
+              exploreField(coordinate.row, coordinate.col);                               // Mező felfedése
+          }                                                                           // Végigmegyünk a szomszédos mezőkön
+      }                                                                           // Ha a mező 0
+  }                                                                           // Ha még nem felfedett mező, és nincs rajta zászló
+}                                                                         // Mező felfedése
+
 
 function calculateFieldValues(map) {
   for (let rowI = 0; rowI < rows; rowI++) {
