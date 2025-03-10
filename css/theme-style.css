@@ -62,7 +62,7 @@ header {
             cursor:             pointer;
             text-decoration:    none;
 
-            background-image:   url("../assets/button-start.png");
+            background-image:   url("../assets/button-start.webp");
             background-size:    contain;
             background-repeat:  no-repeat;
         }
@@ -86,7 +86,7 @@ header {
 
         .counter-text,
         .timer-text {
-            background-image:     url("../assets/counter.png");
+            background-image:     url("../assets/counter.webp");
             background-size:      cover;
             background-repeat:    no-repeat;
             background-position:  center;

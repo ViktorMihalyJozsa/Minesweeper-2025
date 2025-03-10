@@ -71,9 +71,9 @@ const images = {                                             // Képek
 }
 
 const buttons = {                    // Gombok
-  start: 'assets/button-start.png',  // Indítás
-  lost: 'assets/button-lost.png',    // Vesztett
-  won: 'assets/button-won.png',      // Nyert
+  start: 'assets/button-start.webp',   // Indítás
+  lost: 'assets/button-lost.webp',     // Vesztett
+  won: 'assets/button-won.webp',       // Nyert
 }
 
 let isGameOver;      // Játék vége
@@ -86,23 +86,23 @@ let remainingMines;  // Hátralévő aknák
 let timer;           // Időmérő
 
 const difficultySettings = {      // Nehézségi szint beállítások
-  easy: {                         // Könnyű
-    size: controlPanelWidth / 8,  // Méret
-    columns: 8,                   // Oszlopok
-    rows: 8,                      // Sorok
-    mineCount: 7                  // Aknák
+  easy: {                           // Könnyű
+    size: controlPanelWidth / 8,      // Méret
+    columns: 8,                       // Oszlopok
+    rows: 8,                          // Sorok
+    mineCount: 7                      // Aknák
   },
-  medium: {                        // Közepes
-    size: controlPanelWidth / 10,  // Méret
-    columns: 10,                   // Oszlopok
-    rows: 10,                      // Sorok
-    mineCount: 10                  // Aknák
+  medium: {                          // Közepes
+    size: controlPanelWidth / 10,      // Méret
+    columns: 10,                       // Oszlopok
+    rows: 10,                          // Sorok
+    mineCount: 10                      // Aknák
   },
-  hard: {                          // Nehéz
-    size: controlPanelWidth / 12,  // Méret
-    columns: 12,                   // Oszlopok
-    rows: 12,                      // Sorok
-    mineCount: 15                  // Aknák
+  hard: {                            // Nehéz
+    size: controlPanelWidth / 12,      // Méret
+    columns: 12,                       // Oszlopok
+    rows: 12,                          // Sorok
+    mineCount: 15                      // Aknák
   }
 };
 
