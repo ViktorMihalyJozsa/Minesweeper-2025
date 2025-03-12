@@ -16,6 +16,16 @@ html, body {
     H E A D E R - T E X T
 \* ======================================================================== */
 
+#landscape-warning {
+    font-size:       clamp(2rem, 4vw, 3em);
+    font-weight:     bold;
+    letter-spacing:  clamp(0.2rem, 0.4vw, 0.3em);
+    line-height:     10vh;
+    color:           rgba(206, 146, 0, 1); 
+    text-shadow:     0.3em 0.3em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
+    text-align:      center;
+}
+
 .header-text {
     font-size:       clamp(2rem, 4vw, 3em);
     font-weight:     bold;

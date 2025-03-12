@@ -27,6 +27,24 @@ body {
     overflow:          hidden;  /* Nem engedjük a görgetést */
 }
 
+    /* Ezt a div-et csak fekvő módban jelenítjük meg */
+    #landscape-warning {
+        display:          flex;
+        flex-direction:   column;
+        justify-content:  center;
+        align-items:      center;
+
+        position:         fixed; /* Mindig a teljes képernyőn legyen */
+        top:              0;
+        left:             0;
+        padding:          5vh 10vw 5vh 10vw;
+    
+        width:            100vw;
+        height:           100vh;
+
+        z-index:          9999; /* Biztosan minden felett legyen */
+    }
+
 
 /* ======================================================================== *\
    H E A D E R
