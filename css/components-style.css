@@ -49,6 +49,17 @@ html, body {
            A C T I O N - B U T T O N
         \* ======================================================================== */
 
+        #action-button {
+            text-decoration: none;
+        }
+
+            #action-button:hover {
+                text-decoration:  none;
+                filter:           brightness(1.2);
+                transition:       filter 0.8s;
+            }
+
+
         /* ======================================================================== *\
             C O U N T E R  A N D  T I M E R
         \* ======================================================================== */

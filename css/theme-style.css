@@ -62,26 +62,20 @@ header {
             A C T I O N  -  B U T T O N
         \* ======================================================================== */
 
-        .button-image {
-            cursor:             pointer;
-            text-decoration:    none;
+        #action-button.start,
+        #action-button.won,
+        #action-button.lost {
+            cursor:               pointer;
+            text-decoration:      none;
 
-            background-image:   url("../assets/button-start.webp");
-            background-size:    contain;
-            background-repeat:  no-repeat;
-        }
+            background-size:      cover;
+            background-repeat:    no-repeat;
+            background-position:  center;
+        }   
 
-            .button-image:hover {
-                text-decoration:  none;
-                filter:           brightness(1.2);
-                transition:       filter 0.5s;
-            }
-
-            .button-image:active {
-                text-decoration:  none;
-                filter:           brightness(1.2);
-                transition:       filter 0.5s;
-            }
+            #action-button.start {background-image: url('../assets/button-start.webp');}  /* Alapértelmezett gombkép */
+            #action-button.won {background-image: url('../assets/button-won.webp');}      /* Nyertes gombkép */
+            #action-button.lost {background-image: url('../assets/button-lost.webp');}    /* Vesztett gombkép */
 
 
         /* ======================================================================== *\

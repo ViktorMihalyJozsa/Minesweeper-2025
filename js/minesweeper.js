@@ -106,6 +106,11 @@ const difficultySettings = {      // Nehézségi szint beállítások
   }
 };
 
+
+/*  ========================================================================  *\
+      I N I T I A L I Z A T I O N  -  F U N C T I O N S
+\*  ========================================================================  */
+
 function initGame() {
   isGameOver = false;
   isFirstClick = true;
@@ -114,10 +119,14 @@ function initGame() {
   exploredMap = createBooleanMap();
   flagMap = createBooleanMap();
   whenAllImagesLoaded(drawMap);
-  actionButton.src = buttons.start;
+
+  actionButton.classList.remove('won', 'lost');  // Nyert vagy vesztett gomb
+  actionButton.classList.add('start');           // Alapértelmezett gomb
+
   remainingMines = mineCount;
   mineCounter.innerText = convertNumberTo3DigitString(remainingMines);
 }
+
 
 function loadDefaultGame() {
   const settings = difficultySettings['easy'];
@@ -159,7 +168,7 @@ actionButton.addEventListener('click', function() {
 
 
 /*  ========================================================================  *\
-      C L I C K  -  E V E N T
+      C L I C K  -  E V E N T S
 \*  ========================================================================  */
 
 canvas.addEventListener('click', function(event) {  // Kattintás esemény
@@ -214,41 +223,60 @@ canvas.addEventListener('contextmenu', function(event) {
   }
 });
 
-function checkGameEnd(row, col) {
-  if (map[row][col] === 'mine' && exploredMap[row][col]) {
-    looseGame();
-    stopTimer();
-  } else if (exploredFields === rows * columns - mineCount) {
-    isGameOver = true;
-    actionButton.src = buttons.won;
-    stopTimer();
+
+/*  ========================================================================  *\
+      G A M E  -  E N D  -  F U N C T I O N S
+\*  ========================================================================  */
+
+function checkGameEnd(row, col) {                              // Játék vége ellenőrzése
+  if (map[row][col] === 'mine' && exploredMap[row][col]) {       // Ha akna mezőt felfedtünk
+    looseGame();                                                   // Vesztes játék
+    stopTimer();                                                   // Idő megállítása
+  } 
+  else if (exploredFields === rows * columns - mineCount) {      // Ha minden mezőt felfedtünk
+    isGameOver = true;                                             // Játék vége
+
+    actionButton.classList.remove('start');                        // Indítás gomb
+    actionButton.classList.add('won');                             // Győzelem gomb
+
+    stopTimer();                                                   // Idő megállítása
   }
 }
 
-function startTimer() {
-  let seconds = 0;
-  timer = setInterval(function() {
-    seconds = Math.min(seconds + 1, 999);
-    timeCounter.innerText = convertNumberTo3DigitString(seconds);
-  }, 1000);
+
+function startTimer() {                                            // Időmérő indítása
+  let seconds = 0;                                                   // Másodpercek
+  timer = setInterval(function() {                                   // Időmérő
+    seconds = Math.min(seconds + 1, 999);                              // Másodpercek
+    timeCounter.innerText = convertNumberTo3DigitString(seconds);      // Időmérő
+  }, 1000);                                                          // Időmérő
+}                                                                  // Időmérő indítása
+
+function stopTimer() {                                             // Időmérő megállítása
+  clearInterval(timer);                                              // Időmérő
+}                                                                  // Időmérő megállítása
+
+
+/*  ========================================================================  *\
+      G A M E  -  O V E R  -  F U N C T I O N S
+\*  ========================================================================  */
+
+function looseGame() {                     // Vesztes játék
+  isGameOver = true;                         // Játék vége
+
+  actionButton.classList.remove('start');    // Indítás gomb
+  actionButton.classList.add('lost');        // Vesztes gomb
+
+  showWrongFlags();                          // Rossz zászlók
 }
 
-function stopTimer() {
-  clearInterval(timer);
-}
 
-function looseGame() {
-  isGameOver = true;
-  actionButton.src = buttons.lost;
-  showWrongFlags();
-}
-
-function showWrongFlags() {
-  for (let rowI = 0; rowI < rows; rowI++) {
-    for (let colI = 0; colI < columns; colI++) {
-      if (flagMap[rowI][colI] && map[rowI][colI] !== 'mine') {
-        drawImage(images.flaggedWrong, colI * size, rowI * size);
-      }
+function showWrongFlags() {                                        // Rossz zászlók
+  for (let rowI = 0; rowI < rows; rowI++) {                          // Sorok
+    for (let colI = 0; colI < columns; colI++) {                       // Oszlopok
+      if (flagMap[rowI][colI] && map[rowI][colI] !== 'mine') {           // Ha zászló mező, és nem akna mező
+        drawImage(images.flaggedWrong, colI * size, rowI * size);          // Rossz zászló
+      }                                                            // Ha zászló mező, és nem akna mező
     }
   }
 }
@@ -328,12 +356,18 @@ function findNeighbourFields(map, rowI, colI) {
   return neighbourCoordinates;
 }
 
+
+/*  ========================================================================  *\
+      M A P  -  C R E A T I O N  -  F U N C T I O N S
+\*  ========================================================================  */
+
 function placeMines(map, mineCount, startRow, startCol) {
   let mines = 0;
   while (mines < mineCount) {
     let x = Math.floor(Math.random() * columns);
     let y = Math.floor(Math.random() * rows);
-    if (x !== startCol && y !== startRow && map[y][x] !== 'mine') {
+
+    if (map[y][x] !== 'mine' && Math.abs(x - startCol) > 1 && Math.abs(y - startRow) > 1) {
       map[y][x] = 'mine';
       mines++;
     }
