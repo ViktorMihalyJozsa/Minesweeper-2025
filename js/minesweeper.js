@@ -266,19 +266,29 @@ canvas.addEventListener('contextmenu', function(event) {
       C H E C K  -  G A M E  -  E N D
 \*  ========================================================================  */
 
-function checkGameEnd(row, col) {                              // Játék vége ellenőrzése
-  if (map[row][col] === 'mine' && exploredMap[row][col]) {       // Ha akna mezőt felfedtünk
-    looseGame();                                                   // Vesztes játék
-    stopTimer();                                                   // Idő megállítása
-  } 
-  else if (exploredFields === rows * columns - mineCount) {      // Ha minden mezőt felfedtünk
-    isGameOver = true;                                             // Játék vége
+function checkGameEnd(row, col) {                                                 // Játék vége ellenőrzése
+  if (map[row][col] === 'mine' && exploredMap[row][col]) {                          // Ha akna mezőt felfedtünk
+    looseGame();                                                                      // Vesztes játék
+    stopTimer();                                                                      // Időmérő megállítása
+  } else if (exploredFields === rows * columns - mineCount && allMinesFlagged()) {    // Ha minden mezőt felfedtünk, és minden aknát zászlóztunk
+    isGameOver = true;                                                                // Játék vége
 
-    actionButton.classList.remove('start');                        // Indítás gomb
-    actionButton.classList.add('won');                             // Győzelem gomb
+    actionButton.classList.remove('start');                                           // Indítás gomb
+    actionButton.classList.add('won');                                                // Nyert gomb
 
-    stopTimer();                                                   // Idő megállítása
+    stopTimer();                                                                      // Időmérő megállítása
   }
+}
+
+function allMinesFlagged() {                                     // Minden akna zászlózva
+  for (let rowI = 0; rowI < rows; rowI++) {                        // Sorok
+    for (let colI = 0; colI < columns; colI++) {                     // Oszlopok
+      if (map[rowI][colI] === 'mine' && !flagMap[rowI][colI]) {        // Ha akna mező, és nincs rajta zászló
+        return false;                                                    // Hamis
+      }
+    }
+  }
+  return true;                                                     // Igaz
 }
 
 
