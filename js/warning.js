@@ -12,7 +12,7 @@ function checkOrientation() {
     if (!warning) return;
 
     const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-    const maxWidth = 1440;
+    const maxWidth = 768;
 
     if (isLandscape && window.innerWidth <= maxWidth) {
         warning.style.display = "flex";
