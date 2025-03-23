@@ -4,17 +4,40 @@
 
 \*  ========================================================================  */
 
-function checkOrientation() {
-    const maxWidth = 1024; // Csak mobil és tablet esetén aktív
 
-    if (window.innerWidth <= maxWidth && window.innerWidth > window.innerHeight) {
-        document.getElementById("landscape-warning").style.display = "flex";
+document.addEventListener("DOMContentLoaded", checkOrientation);
+
+function checkOrientation() {
+    const warning = document.getElementById("warning");
+    if (!warning) return;
+
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+    const maxWidth = 1440;
+
+    if (isLandscape && window.innerWidth <= maxWidth) {
+        warning.style.display = "flex";
+        setTimeout(() => warning.classList.add("show"), 10);
     } else {
-        document.getElementById("landscape-warning").style.display = "none";
+        warning.classList.remove("show");
+        setTimeout(() => {
+            if (!warning.classList.contains("show")) {
+                warning.style.display = "none";
+            }
+        }, 500);
     }
 }
 
-// Az oldal betöltésekor és az orientáció változásakor ellenőrizzük
+document.addEventListener("DOMContentLoaded", () => {
+    const warning = document.getElementById("warning");
+    if (warning) {
+        warning.addEventListener("transitionend", () => {
+            if (!warning.classList.contains("show")) {
+                warning.style.display = "none";
+            }
+        });
+    }
+});
+
 window.addEventListener("resize", checkOrientation);
 window.addEventListener("orientationchange", checkOrientation);
-document.addEventListener("DOMContentLoaded", checkOrientation);
+window.addEventListener("load", checkOrientation);

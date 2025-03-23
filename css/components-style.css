@@ -12,19 +12,10 @@ html, body {
     font-size:    16px;
 }
 
+
 /* ======================================================================== *\
     H E A D E R - T E X T
 \* ======================================================================== */
-
-#landscape-warning {
-    font-size:       clamp(2rem, 4vw, 3em);
-    font-weight:     bold;
-    letter-spacing:  clamp(0.2rem, 0.4vw, 0.3em);
-    line-height:     10vh;
-    color:           rgba(206, 146, 0, 1); 
-    text-shadow:     0.3em 0.3em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
-    text-align:      center;
-}
 
 .header-text {
     font-size:       clamp(2rem, 4vw, 3em);
@@ -35,6 +26,16 @@ html, body {
     text-shadow:     0.3em 0.3em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
     text-align:      left;
 }
+
+    .landscape-warning {
+        font-size:       clamp(1.5rem, 3vw, 2em);
+        font-weight:     bold;
+        letter-spacing:  clamp(0.15rem, 0.3vw, 0.2em);
+        line-height:     10vh;
+        color:           white;
+        text-shadow:     0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 1), -0.1rem -0.1rem black;
+        text-align:      center;
+    }
 
 
 /* ======================================================================== *\

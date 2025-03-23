@@ -27,22 +27,18 @@ body {
     overflow:          hidden;  /* Nem engedjük a görgetést */
 }
 
-    /* Ezt a div-et csak fekvő módban jelenítjük meg */
-    #landscape-warning {
+    .landscape-warning {
         display:          flex;
         flex-direction:   column;
         justify-content:  center;
         align-items:      center;
 
-        position:         fixed; /* Mindig a teljes képernyőn legyen */
+        position:         fixed;
         top:              0;
         left:             0;
-        padding:          5vh 10vw 5vh 10vw;
-    
         width:            100vw;
         height:           100vh;
-
-        z-index:          9999; /* Biztosan minden felett legyen */
+        padding:          5vh 10vw;
     }
 
 
@@ -84,7 +80,7 @@ main {
     align-items:      center;
     justify-content:  center;
 
-    width:            100%;  /* vagy max-width: 100vw; */
+    width:            100%;
     height:           auto;
     padding:          4vh 0vw 2vh 0vw;
     margin:           0;
@@ -96,21 +92,14 @@ main {
     \* ======================================================================== */
 
     #control-panel {
-        position:          relative;
+        position:       relative;
 
-        width:             30vw;
-        height:            15vh;
-        margin-bottom:     1vh;
+        width:          30vw;  /* 30% of the screen width */
+        height:         15vh;  /* 15% of the screen height */
+        margin-bottom:  1vh;
 
-        border:            none;
-        border-radius:     1vh;
-    }
-
-    @media screen and (max-width: 768px) {
-        #control-panel {
-            width:  80vw;
-            height: 20vw;
-        }
+        border:         none;
+        border-radius:  1vh;
     }
 
 
@@ -124,8 +113,10 @@ main {
             left:           50%;
             transform:      translateX(-50%);
 
-            width:          30%;
-            height:         100%;
+            width:          9vw;   /* 30% of the control panel */
+            height:         15vh;  /* 100% of the control panel */
+            margin:         0;
+            padding:        0;
 
             border:         0.1vh solid black;
             border-radius:  1.5vh;
@@ -154,7 +145,7 @@ main {
             justify-content:  center;
             align-items:      center;
 
-            width:            30%;
+            width:            9vw;  /* 30% of the control panel */
             height:           auto;
             padding:          0;
             margin:           0;
@@ -186,8 +177,8 @@ main {
             align-items:      center;
             text-align:       center;
 
-            width:            30%;
-            height:           30%;
+            width:            9vw;    /* 30% of the control panel */
+            height:           4.5vh;  /* 30% of the control panel */  
             padding:          0;
             margin:           0;
         }
@@ -230,19 +221,6 @@ main {
             }
 
 
-        @media screen and (max-width: 768px) {
-            #dropdown-content {
-                top:         calc(1vh + 20vw);
-                width:       80vw;
-                max-height:  0;
-            }
-
-            #dropdown-content.show {
-                max-height:  80vw;
-            }
-        }
-
-
         /* ======================================================================== *\
             G A M E - P A G E
         \* ======================================================================== */
@@ -264,15 +242,6 @@ main {
         max-width:     600px;
         height:        auto;
         aspect-ratio:  1 / 1;
-    }
-
-    @media screen and (max-width: 768px) {
-        #myCanvas {
-            width:         80vw;
-            max-width:     600px;
-            height:        auto;
-            aspect-ratio:  1 / 1;
-        }
     }
 
 
@@ -297,6 +266,50 @@ footer {
 /* ======================================================================== *\
     M E D I A  -  Q U E R I E S
 \* ======================================================================== */
+
+@media screen and (max-width: 768px) {
+    #control-panel {
+        width:   80vw;  /* 80% of the screen width */
+        height:  20vw;  /* 20% of the screen height */
+    }
+
+        #action-button {
+            width:   24vw;  /* 30% of the control panel */
+            height:  20vw;  /* 100% of the control panel */
+        }
+
+        #mine-count,
+        #time {
+            width:   24vw;  /* 30% of the control panel */
+            height:  auto;  /* Auto height */
+        }
+
+        #game-page,
+        #difficulty {
+            width:   24vw;  /* 30% of the control panel */
+            height:  6vw;  /* 30% of the control panel */
+        }
+
+
+    #dropdown-content {
+        top:         calc(1vh + 20vw);  /* 20% of the screen height */
+        width:       80vw;              /* 80% of the screen width */
+        max-height:  0;                 /* Initially hidden */
+    }
+
+        #dropdown-content.show {
+            max-height:  80vw;  /* 80% of the screen height */
+        }
+
+
+    #myCanvas {
+        width:         80vw;   /* 80% of the screen width */
+        max-width:     600px;  /* Maximum width */
+        height:        auto;   /* Auto height */
+        aspect-ratio:  1 / 1;  /* 1:1 aspect ratio */
+    }
+}
+
 
 /* ======================================================================== *\
     E N D  -  O F  -  S T Y L E  -  S H E E T

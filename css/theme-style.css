@@ -14,9 +14,19 @@ body {
     background-position:  center;
 }
 
-#landscape-warning {
-    background-color:  rgba(206, 146, 0, 0.9);
-}
+    .landscape-warning{
+        z-index:           9999;
+        background-color:  rgba(206, 146, 0, 0.95);  /* Enyhén sötétebb háttér a jobb kontrasztért */
+        opacity:         0;                                                     /* Kezdetben rejtett */
+        transform:       scale(0.9);
+        transition:      opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+        /* Amikor aktív, finoman felnagyítjuk és megjelenítjük */
+        .landscape-warning.show {
+            opacity: 1;
+            transform: scale(1);
+        }
 
 
 /* ======================================================================== *\
