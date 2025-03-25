@@ -313,15 +313,26 @@ footer {
         }
 
 
-    .drop-down-content-text {
-        top:         calc(1vh + 20vw);  /* 20% of the screen height */
-        width:       80vw;              /* 80% of the screen width */
-        max-height:  0;                 /* Initially hidden */
-    }
+        #drop-down-content {
+            display:          none;
+            position:         absolute;
+            top:              calc(1vh + 20vw);
+            left:             0;
 
-        .drop-down-content-text.show {
-            max-height:  80vw;  /* 80% of the screen height */
+            width:            80vw;
+            max-height:       0;
         }
+
+            #drop-down-content.show {
+                display:     block;
+                max-height:  80vw;
+                overflow-y:  auto; /* Enable vertical scrolling */
+            }
+
+            /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+            #drop-down-content::-webkit-scrollbar {
+                display:  none;
+            }
 
 
     #myCanvas {
