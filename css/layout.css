@@ -324,7 +324,7 @@ footer {
         }
 
 
-    .canvas-style {
+    #myCanvas {
         width:         80vw;   /* 80% of the screen width */
         max-width:     600px;  /* Maximum width */
         height:        auto;   /* Auto height */
