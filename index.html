@@ -16,46 +16,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/layout-style.css">
-    <link rel="stylesheet" href="css/theme-style.css">
-    <link rel="stylesheet" href="css/components-style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
-
-
 <body>
-
     <header>
         <div class="header-logo" aria-label="Minesweeper Logo">VMJ</div>
         <div class="header-text">MINESWEEPER</div>
     </header>
-
     <main>
-        <div id="control-panel" class="ui-element">
-            <span id="mine-count" class="counter-text ui-element">000</span>
-            <span id="game-page" class="game-text ui-element">GAME</span>
-            <div id="action-button" class="ui-element"></div>
-            <span id="time" class="timer-text ui-element">000</span>
-            <select id="difficulty" class="select-text ui-element">
+        <div id="control-panel" class="control-panel-container ui-element">
+            <span id="piece-counter" class="piece-counter-number ui-element">000</span>
+            <span id="game-description" class="game-description-text ui-element">GAME</span>
+            <div id="action-button" class="action-button-image ui-element"></div>
+            <span id="time-counter" class="time-counter-number ui-element">000</span>
+            <select id="difficulty-levels" class="difficulty-levels-text ui-element">
                 <option value="easy">EASY</option>
                 <option value="medium">MEDIUM</option>
                 <option value="hard">HARD</option>
             </select>            
-            <section id="dropdown-content" class="ui-element">
-                <!-- Content from page/minesweeper-page.html will be loaded here -->
+            <section id="drop-down-content" class="drop-down-content-text ui-element">
+                <!-- Content from: page/game-description-page.html - will be loaded here -->
             </section>
         </div>
-        <canvas id="myCanvas" class="ui-element" aria-label="Minesweeper game board"></canvas>
+        <canvas id="myCanvas" class="canvas-style ui-element" aria-label="Minesweeper game board"></canvas>  
         <script src="js/minesweeper.js" defer></script>
         <script src="js/dropdown.js" defer></script>
     </main>
-
     <footer>
         <span class="footer-text">Best regards from:
             <a href="https://viktormihalyjozsa.com/" title="Dear Page" target="_blank">VMJ</a>
             ~ 2025
         </span>
     </footer>
-
     <div id="warning" class="landscape-warning">
         Please rotate the device back
         <br>
@@ -65,6 +58,4 @@
     </div>
     <script src="js/warning.js" defer></script>
 </body>
-
-
 </html>

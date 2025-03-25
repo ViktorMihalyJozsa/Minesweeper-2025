@@ -2,6 +2,18 @@
 
      W A R N I N G  -  J a v a S c r i p t
 
+        A warning.js fájl a játék oldalának orientációját ellenőrzi.
+
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        A fájl tartalma:
+            - Az orientáció ellenőrzése
+            - A figyelmeztetés megjelenítése
+
+        A fájlhoz tartozó CSS:
+            - layout.css
+            - components.css
+
 \*  ========================================================================  */
 
 
@@ -41,3 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("resize", checkOrientation);
 window.addEventListener("orientationchange", checkOrientation);
 window.addEventListener("load", checkOrientation);
+
+
+/*  ========================================================================  *\
+      E N D   O F   W A R N I N G - J a v a S c r i p t   F I L E
+\*  ========================================================================  */

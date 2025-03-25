@@ -1,0 +1,274 @@
+/* ======================================================================== *\
+
+    C O M P O N E N T S - S T Y L E S - S H E E T . C S S
+
+    Ez a CSS-fájl tartalmazza a játék összetevőinek stílusait.
+
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    A stílusok a következő sorrendben vannak írva:
+
+        1. H T M L  &  B O D Y
+        2. H E A D E R
+        3. M A I N
+            3.1. C O N T R O L - P A N E L - C O N T A I N E R
+                3.1.1. A C T I O N - B U T T O N
+                3.1.2. C O U N T E R  A N D  T I M E R
+                3.1.3. G A M E  A N D  S E L E C T I O N
+                3.1.4. D R O P - D O W N - C O N T E N T
+                3.1.5. G A M E - P A G E
+            3.2. C A N V A S
+        4. F O O T E R
+
+\* ======================================================================== */
+
+/* ======================================================================== *\
+    H T M L  &  B O D Y
+\* ======================================================================== */
+
+html, body {
+    font-family:  'Caveat', sans-serif;
+    font-size:    16px;
+}
+
+body {
+    background-image:     url("../assets/wooden_background.webp");
+    background-size:      cover;
+    background-repeat:    no-repeat;
+    background-position:  center;
+}
+
+    .landscape-warning{
+        z-index:           9999;
+        background-color:  rgba(206, 146, 0, 0.95);  /* Enyhén sötétebb háttér a jobb kontrasztért */
+        opacity:           0;                                                     /* Kezdetben rejtett */
+        transform:         scale(0.9);
+        transition:        opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+        /* Amikor aktív, finoman felnagyítjuk és megjelenítjük */
+        .landscape-warning.show {
+            opacity:    1;
+            transform:  scale(1);
+        }
+
+        .landscape-warning {
+            font-size:       clamp(1.5rem, 3vw, 2em);
+            font-weight:     bold;
+            letter-spacing:  clamp(0.15rem, 0.3vw, 0.2em);
+            line-height:     10vh;
+            color:           white;
+            text-shadow:     0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 1), -0.1rem -0.1rem black;
+            text-align:      center;
+        }
+
+
+/* ======================================================================== *\
+    H E A D E R
+\* ======================================================================== */
+
+header {
+    background-color:  rgba(0, 0, 0, 0.5);
+}
+
+    .header-logo {
+        background-image:     url('../assets/logo.webp');
+        background-size:      contain;
+        background-repeat:    no-repeat;
+        background-position:  center;
+    }
+
+.header-text {
+    font-size:       clamp(2rem, 4vw, 3em);
+    font-weight:     bold;
+    letter-spacing:  clamp(0.2rem, 0.4vw, 0.3em);
+    line-height:     10vh;
+    color:           rgba(206, 146, 0, 1); 
+    text-shadow:     0.3em 0.3em 0.6em rgba(0, 0, 0, 1), -0.1em -0.1em black;
+    text-align:      left;
+}
+
+
+/* ======================================================================== *\
+   M A I N 
+\* ======================================================================== */
+
+    /* ======================================================================== *\
+       C O N T R O L - P A N E L - C O N T A I N E R
+    \* ======================================================================== */
+
+    .control-panel-container {
+        background-color:  rgba(0, 0, 0, 0.25);
+    }
+
+        .control-panel-container:hover {
+            background-color:  rgba(0, 0, 0, 0.5);
+            transition:        background-color 0.5s;
+        }
+
+        .control-panel-container:active {
+            background-color:  rgba(0, 0, 0, 0.5);
+            transition:        background-color 0.5s;
+        }
+
+
+        /* ======================================================================== *\
+           A C T I O N - B U T T O N
+        \* ======================================================================== */
+
+        .action-button-image {
+            cursor:               pointer;
+            text-decoration:      none;
+
+            background-image:     url("../assets/action_button.webp");
+            background-size:      cover;
+            background-repeat:    no-repeat;
+            background-position:  center;
+        }
+
+            .action-button-image:hover {
+                text-decoration:  none;
+                filter:           brightness(1.2);
+                transition:       filter 0.8s;
+            }
+
+
+        /* ======================================================================== *\
+            C O U N T E R  A N D  T I M E R
+        \* ======================================================================== */
+
+        .piece-counter-number,
+        .time-counter-number {
+            background-image:     url("../assets/counter.webp");
+            background-size:      cover;
+            background-repeat:    no-repeat;
+            background-position:  center;
+
+            font-size:            clamp(2rem, 3.2vw, 2.4em);
+            font-weight:          bold;
+            letter-spacing:       clamp(0.2rem, 0.32vw, 0.24em);
+            color:                rgba(206, 146, 0, 1);
+            text-shadow:          0.24rem 0.24rem 0.36rem black, -0.1rem -0.1rem black;
+        }
+
+
+        /* ======================================================================== *\
+            G A M E  A N D  S E L E C T I O N
+        \* ======================================================================== */
+
+        .game-description-text,
+        .difficulty-levels-text {
+            cursor:            pointer;
+            text-decoration:   none;
+
+            background-color:  rgba(206, 146, 0, 0.9);
+            border:            0.1vh solid black;
+            border-radius:     1vh;
+
+            font-family:       'Caveat', sans-serif;
+            font-size:         clamp(1rem, 1.5vw, 1.25em);
+            font-weight:       bold;
+            letter-spacing:    clamp(0.1rem, 0.15vw, 0.125em);
+            color:             rgba(255, 255, 255, 0.75);
+            text-shadow:       0.125rem 0.125rem 0.25rem black, -0.1rem -0.1rem black;
+        }
+
+            .game-description-text:hover, 
+            .difficulty-levels-text:hover {
+                text-decoration:  none;
+                filter:           brightness(1.2);
+                transition:       filter 0.5s;
+            }
+
+
+        /* ======================================================================== *\
+            D R O P - D O W N - C O N T E N T
+        \* ======================================================================== */
+
+        .drop-down-content-text {
+            background-color:  rgba(206, 146, 0, 0.9);
+        }
+
+
+        /* ======================================================================== *\
+            G A M E - P A G E
+        \* ======================================================================== */
+
+        .game-description-page {
+            text-align:       center;
+        }
+
+            h3 {
+                margin:           1.5rem 0rem 0.5rem 0rem;
+
+                font-size:       clamp(1.2rem, 2.4vw, 1.8em);
+                font-weight:     bold;
+                letter-spacing:  clamp(0.12rem, 0.24vw, 0.18em);
+                color:           rgba(255, 255, 255, 0.75);
+                text-shadow:     0.25em 0.25em 0.25em rgba(68, 68, 68, 1), -0.1em -0.1em black;
+            }
+
+            p {
+                font-size:       clamp(1rem, 2vw, 1.5em);
+                letter-spacing:  clamp(0.1rem, 0.2vw, 0.15em);
+                color:           rgba(255, 255, 255, 0.75);
+                text-shadow:     -0.1em -0.1em black;
+            }
+
+            a {
+                text-decoration:  none;
+                font-size:        clamp(1.5rem, 2vw, 1.5em);
+                letter-spacing:   clamp(0.15rem, 0.2vw, 0.15em);
+                color:            rgba(206, 146, 0, 0.75);
+                text-shadow:      0.1rem 0.1rem 0.1rem rgba(68, 68, 68, 1), -0.1rem -0.1rem black;
+            }
+
+                a:hover {
+                    text-decoration:  none;
+                    color:            rgba(139, 0, 0, 0.75);
+                    transition:       color 0.5s;
+                }
+
+
+    /* ======================================================================== *\
+        C A N V A S
+    \* ======================================================================== */
+
+    .canvas-style {
+        border:            0.1vh solid black;
+        background-color:  rgba(206, 146, 0, 0.9); 
+    }
+
+
+/* ======================================================================== *\
+    F O O T E R
+\* ======================================================================== */
+
+footer {
+    background-color:  rgba(0, 0, 0, 0.5);
+}
+
+    footer a {
+        text-decoration:  none;
+        font-size:        clamp(1.5rem, 2vw, 1.5em);
+        letter-spacing:   clamp(0.15rem, 0.2vw, 0.15em);
+        color:            rgba(206, 146, 0, 1);
+    }
+
+    footer a:hover {
+        text-decoration:  none;
+        color:            rgba(139, 0, 0, 0.75);
+        transition:       color 0.5s;
+    }
+
+.footer-text {
+    font-size:       clamp(1rem, 2vw, 1.5em);
+    font-weight:     bold;
+    letter-spacing:  clamp(0.1rem, 0.2vw, 0.15em);
+    color:           rgba(255, 255, 255, 0.75);
+    text-shadow:     0.25em 0.25em 0.25em rgba(68, 68, 68, 1), -0.1em -0.1em black;
+}
+
+/* ======================================================================== *\
+    E N D  O F  C O M P O N E N T S - S T Y L E S - S H E E T . C S S
+\* ======================================================================== */

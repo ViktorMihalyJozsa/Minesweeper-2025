@@ -1,49 +1,51 @@
 /*  ========================================================================  *\
 
-    F I N D E R  -  J a v a S c r i p t  -  M i n e s w e e p e r
+     F I N D E R - J a v a S c r i p t - M i n e s w e e p e r
 
-    Készítette:  V M J  &  ASK
+         Készítette:  V M J  &  ASK
+
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     Az aknakereső játék használata a Finder alkalmazásban.
 
-    A játék célja, hogy a játékos felfedje az összes mezőt, amely nem tartalmaz
-    aknát. Az aknák elhelyezkedése véletlenszerű, és a játékosnak a mezők
-    felfedése során kell kiderítenie, hogy hol vannak az aknák.
+    ~ A játék célja, hogy a játékos felfedje az összes mezőt, amely nem tartalmaz
+        aknát. Az aknák elhelyezkedése véletlenszerű, és a játékosnak a mezők
+        felfedése során kell kiderítenie, hogy hol vannak az aknák.
 
-    A játék véget ér, ha a játékos felfedi az összes mezőt, amely nem tartalmaz
-    aknát, vagy ha az akna mezőt felfedi.
+    ~ A játék véget ér, ha a játékos felfedi az összes mezőt, amely nem tartalmaz
+        aknát, vagy ha az akna mezőt felfedi.
 
-    A játékban a játékosnak lehetősége van zászlót helyezni azokra a mezőkre,
-    amelyekről úgy gondolja, hogy aknát tartalmaznak. A játékos nyer, ha
-    minden mezőt felfedett, és veszít, ha az akna mezőt felfedi.
+    ~ A játékban a játékosnak lehetősége van zászlót helyezni azokra a mezőkre,
+        amelyekről úgy gondolja, hogy aknát tartalmaznak. A játékos nyer, ha
+        minden mezőt felfedett, és veszít, ha az akna mezőt felfedi.
 
-    A játékban a játékosnak lehetősége van a játékot újraindítani, és a nehézségi
-    szintet változtatni. A nehézségi szint változtatásával a játéktábla mérete
-    és az aknák száma is változik.
+    ~ A játékban a játékosnak lehetősége van a játékot újraindítani, és a nehézségi
+        szintet változtatni. A nehézségi szint változtatásával a játéktábla mérete
+        és az aknák száma is változik.
 
-    A játékban a játékosnak lehetősége van az időt mérni, amely a játék során
-    eltelt időt mutatja.
+    ~ A játékban a játékosnak lehetősége van az időt mérni, amely a játék során
+        eltelt időt mutatja.
 
-    A játékban a játékosnak lehetősége van a játékot megállítani, ha úgy dönt,
-    hogy nem szeretné folytatni a játékot.
+    ~ A játékban a játékosnak lehetősége van a játékot megállítani, ha úgy dönt,
+        hogy nem szeretné folytatni a játékot.
 
-    A játékban a játékosnak lehetősége van a játékot újraindítani, ha úgy
-    dönt, hogy új játékot szeretne játszani.
+    ~ A játékban a játékosnak lehetősége van a játékot újraindítani, ha úgy
+        dönt, hogy új játékot szeretne játszani.
 
-    A játékban a játékosnak lehetősége van a játékot befejezni, ha a játékos
-    nyert vagy vesztett.
+    ~ A játékban a játékosnak lehetősége van a játékot befejezni, ha a játékos
+        nyert vagy vesztett.
     
 \*  ========================================================================  */
 
 /*  ========================================================================  *\
-      C A N V A S  -  A N D  -  C O N T R O L  -  P A N E L
+      C O N S T A N T S
 \*  ========================================================================  */
 
-const bodyWidth = document.body.clientWidth;    // Szélesség
-const bodyHeight = document.body.clientHeight;  // Magasság
+const bodyWidth = document.body.clientWidth;                    // Szélesség
+const bodyHeight = document.body.clientHeight;                  // Magasság
 
-const canvas = document.getElementById('myCanvas');  // Vászon
-const c = canvas.getContext('2d');                   // Rajzolás
+const canvas = document.getElementById('myCanvas');             // Vászon
+const c = canvas.getContext('2d');                              // Rajzolás
 
 const controlPanel = document.getElementById('control-panel');  // Vezérlőpanel
 const controlPanelWidth = controlPanel.offsetWidth;             // Vezérlőpanel szélessége
@@ -55,18 +57,22 @@ let mineCount;  // Aknák
 
 
 /*  ========================================================================  *\
-      B U T T O N S  -  A N D  -  I M A G E S
+      B U T T O N S   &   I M A G E S
 \*  ========================================================================  */
 
 const actionButton = document.getElementById('action-button');  // Akció gomb
-const mineCounter = document.getElementById('mine-count');      // Akna számláló
-const timeCounter = document.getElementById('time');            // Idő számláló
+const mineCounter = document.getElementById('piece-counter');   // Darabszám számláló
+const timeCounter = document.getElementById('time-counter');    // Idő számláló
 
-const buttons = {                    // Gombok
-  start: 'assets/button-start.webp',   // Indítás
-  lost: 'assets/button-lost.webp',     // Vesztett
-  won: 'assets/button-won.webp',       // Nyert
+const buttons = {      // Gombok - Képek
+  start: new Image(),    // Indítás - Alapértelmezett
+  lost: new Image(),     // Vesztett - Vesztes
+  won: new Image(),      // Nyert - Nyertes
 };
+
+buttons.start.src = 'assets/button-start.webp';   // Indítás
+buttons.lost.src = 'assets/button-lost.webp';     // Vesztett
+buttons.won.src = 'assets/button-won.webp';       // Nyert
 
 const images = {                     // Képek
   'hidden': new Image(),               // Rejtett mező
@@ -85,19 +91,19 @@ const images = {                     // Képek
   'flaggedWrong': new Image(),         // Rossz zászló
 };
 
-images.hidden.src = 'assets/hidden.webp';  // Rejtett mező
-images.mine.src = 'assets/mine.webp';    // Akna
+images.hidden.src = 'assets/hidden.webp';               // Rejtett mező
+images.mine.src = 'assets/mine.webp';                   // Akna
 images.explodedMine.src = 'assets/exploded-mine.webp';  // Felrobbant akna
-images['0'].src = 'assets/0.webp';  // Mező 0
-images['1'].src = 'assets/1.webp';  // Mező 1
-images['2'].src = 'assets/2.webp';  // Mező 2
-images['3'].src = 'assets/3.webp';  // Mező 3
-images['4'].src = 'assets/4.webp';  // Mező 4
-images['5'].src = 'assets/5.webp';  // Mező 5
-images['6'].src = 'assets/6.webp';  // Mező 6
-images['7'].src = 'assets/7.webp';  // Mező 7
-images['8'].src = 'assets/8.webp';  // Mező 8
-images.flag.src = 'assets/flag.webp';  // Zászló
+images['0'].src = 'assets/0.webp';                      // Mező 0
+images['1'].src = 'assets/1.webp';                      // Mező 1
+images['2'].src = 'assets/2.webp';                      // Mező 2
+images['3'].src = 'assets/3.webp';                      // Mező 3
+images['4'].src = 'assets/4.webp';                      // Mező 4
+images['5'].src = 'assets/5.webp';                      // Mező 5
+images['6'].src = 'assets/6.webp';                      // Mező 6
+images['7'].src = 'assets/7.webp';                      // Mező 7
+images['8'].src = 'assets/8.webp';                      // Mező 8
+images.flag.src = 'assets/flag.webp';                   // Zászló
 images.flaggedWrong.src = 'assets/flagged-wrong.webp';  // Rossz zászló
 
 
@@ -116,7 +122,7 @@ let timer;           // Időmérő
 
 
 /*  ========================================================================  *\
-      D I F F I C U L T Y  -  S E T T I N G S
+      D I F F I C U L T Y   S E T T I N G S
 \*  ========================================================================  */
 
 const difficultySettings = {      // Nehézségi szint beállítások
@@ -142,7 +148,7 @@ const difficultySettings = {      // Nehézségi szint beállítások
 
 
 /*  ========================================================================  *\
-      I N I T I A L I Z A T I O N  -  F U N C T I O N S
+      I N I T   G A M E
 \*  ========================================================================  */
 
 function initGame() {
@@ -156,11 +162,16 @@ function initGame() {
 
   actionButton.classList.remove('won', 'lost');  // Nyert vagy vesztett gomb
   actionButton.classList.add('start');           // Alapértelmezett gomb
+  actionButton.style.backgroundImage = `url(${buttons.start.src})`; // Gomb kép beállítása
 
   remainingMines = mineCount;
   mineCounter.innerText = convertNumberTo3DigitString(remainingMines);
 }
 
+
+/*  ========================================================================  *\
+      L O A D   D E F A U L T   G A M E
+\*  ========================================================================  */
 
 function loadDefaultGame() {
   const settings = difficultySettings['easy'];
@@ -172,6 +183,11 @@ function loadDefaultGame() {
   canvas.height = rows * size;
   initGame();
 }
+
+
+/*  ========================================================================  *\
+      S T A R T   G A M E   A U T O M A T I C A L L Y
+\*  ========================================================================  */
 
 function setDifficulty(difficulty) {                       // Nehézségi szint beállítása
   stopTimer();                                                 // Idő megállítása
@@ -188,21 +204,26 @@ function setDifficulty(difficulty) {                       // Nehézségi szint 
   initGame();                                                  // Játék inicializálása
 }
 
-document.getElementById('difficulty').addEventListener('change', function() {  // Nehézségi szint változtatása
-  const difficulty = this.value;                                                   // Nehézségi szint
-  setDifficulty(difficulty);                                                       // Nehézségi szint beállítása
+
+/*  ========================================================================  *\
+      D I F F I C U L T Y   L E V E L S
+\*  ========================================================================  */
+
+document.getElementById('difficulty-levels').addEventListener('change', function() {  // Nehézségi szint változtatása
+  const difficulty = this.value;                                                        // Nehézségi szint
+  setDifficulty(difficulty);                                                            // Nehézségi szint beállítása
 });
 
-actionButton.addEventListener('click', function() {
-  const difficulty = document.getElementById('difficulty').value;
-  setDifficulty(difficulty);
-  stopTimer();
-  timeCounter.innerText = convertNumberTo3DigitString(0);
+actionButton.addEventListener('click', function() {                       // Akció gomb
+  const difficulty = document.getElementById('difficulty-levels').value;    // Nehézségi szint
+  setDifficulty(difficulty);                                                // Nehézségi szint beállítása
+  stopTimer();                                                              // Idő megállítása
+  timeCounter.innerText = convertNumberTo3DigitString(0);                   // Idő nullázása
 });
 
 
 /*  ========================================================================  *\
-      L E F T  -  C L I C K  -  E V E N T S
+      L E F T - C L I C K   E V E N T S
 \*  ========================================================================  */
 
 canvas.addEventListener('click', function(event) {  // Kattintás esemény
@@ -232,7 +253,7 @@ canvas.addEventListener('click', function(event) {  // Kattintás esemény
 
 
 /*  ========================================================================  *\
-      R I G H T  -  C L I C K  -  E V E N T S
+      R I G H T - C L I C K   E V E N T S
 
       A jobb kattintás eseményeket a zászlózásra használjuk.
       Ha a játékos jobb kattintást végez egy mezőn, akkor a játékos
@@ -277,7 +298,7 @@ canvas.addEventListener('contextmenu', function(event) {                   // Jo
 
 
 /*  ========================================================================  *\
-      C H E C K  -  G A M E  -  E N D
+      C H E C K   G A M E   E N D
 \*  ========================================================================  */
 
 function checkGameEnd(row, col) {                                                 // Játék vége ellenőrzése
@@ -289,6 +310,7 @@ function checkGameEnd(row, col) {                                               
 
     actionButton.classList.remove('start');                                           // Indítás gomb
     actionButton.classList.add('won');                                                // Nyert gomb
+    actionButton.style.backgroundImage = `url(${buttons.won.src})`;                   // Gomb kép beállítása
 
     stopTimer();                                                                      // Időmérő megállítása
   }
@@ -307,7 +329,7 @@ function allMinesFlagged() {                                     // Minden akna 
 
 
 /*  ========================================================================  *\
-      T I M E R  -  F U N C T I O N S
+      T I M E R   F U N C T I O N S
 \*  ========================================================================  */
 
 function startTimer() {                                            // Időmérő indítása
@@ -324,21 +346,22 @@ function stopTimer() {                                             // Időmérő
 
 
 /*  ========================================================================  *\
-      L O O S E  -  G A M E
+      L O O S E   G A M E
 \*  ========================================================================  */
 
-function looseGame() {                     // Vesztes játék
-  isGameOver = true;                         // Játék vége
+function looseGame() {                                           // Vesztes játék
+  isGameOver = true;                                               // Játék vége
 
-  actionButton.classList.remove('start');    // Indítás gomb
-  actionButton.classList.add('lost');        // Vesztes gomb
+  actionButton.classList.remove('start');                          // Indítás gomb
+  actionButton.classList.add('lost');                              // Vesztes gomb
+  actionButton.style.backgroundImage = `url(${buttons.lost.src})`; // Gomb kép beállítása
 
-  showWrongFlags();                          // Rossz zászlók
+  showWrongFlags();                                                // Rossz zászlók
 }
 
 
 /*  ========================================================================  *\
-      S H O W  -  W R O N G  -  F L A G S
+      S H O W   W R O N G   F L A G S
 \*  ========================================================================  */
 
 function showWrongFlags() {                                        // Rossz zászlók
@@ -353,7 +376,7 @@ function showWrongFlags() {                                        // Rossz zás
 
 
 /*  ========================================================================  *\
-      E X P L O R E  -  F I E L D
+      E X P L O R E   F I E L D
 \*  ========================================================================  */
 
 function exploreField(row, col) {                                         // Mező felfedése
@@ -377,7 +400,7 @@ function exploreField(row, col) {                                         // Mez
 
 
 /*  ========================================================================  *\
-      M A P  -  C R E A T I O N  -  F U N C T I O N S
+      M A P   F U N C T I O N S
 \*  ========================================================================  */
 
 function calculateFieldValues(map) {
@@ -395,7 +418,7 @@ function calculateFieldValues(map) {
 
 
 /*  ========================================================================  *\
-      M A P  -  C O U N T  -  F U N
+      C O U N T   M I N E S
 \*  ========================================================================  */
 
 function countMines(map, coordinates) {
@@ -412,7 +435,7 @@ function countMines(map, coordinates) {
 
 
 /*  ========================================================================  *\
-      M A P  -  F L A G G E D  -  N E I G H B O U R S
+      C O U N T   F L A G G E D   N E I G H B O U R S
 \*  ========================================================================  */
 
 function countFlaggedNeighbours(coordinates) {
@@ -428,7 +451,7 @@ function countFlaggedNeighbours(coordinates) {
 
 
 /*  ========================================================================  *\
-      F I N D  -  N E I G H B O U R  -  F I E L D S
+      F I N D   N E I G H B O U R   F I E L D S
 \*  ========================================================================  */
 
 function findNeighbourFields(map, rowI, colI) {
@@ -447,7 +470,7 @@ function findNeighbourFields(map, rowI, colI) {
 
 
 /*  ========================================================================  *\
-      P L A C E  -  M I N E S
+      P L A C E   M I N E S
 \*  ========================================================================  */
 
 function placeMines(map, mineCount, startRow, startCol) {
@@ -465,7 +488,7 @@ function placeMines(map, mineCount, startRow, startCol) {
 
 
 /*  ========================================================================  *\
-      D R A W  -  M A P
+      C R E A T E   M A P  &  B O O L E A N   M A P   F U N C T I O N S
 \*  ========================================================================  */
 
 function createMap() {
@@ -516,7 +539,7 @@ function drawImage(image, x, y) {
 
 
 /*  ========================================================================  *\
-      H E L P E R  -  F U N C T I O N S
+      C O N V E R T   N U M B E R   T O   3   D I G I T   S T R I N G
 \*  ========================================================================  */
 
 function convertNumberTo3DigitString(number) {
@@ -532,7 +555,7 @@ function convertNumberTo3DigitString(number) {
 }
 
 /*  ========================================================================  *\
-      W A I T  -  F O R  -  I M A G E S  -  T O  -  L O A D
+      W H E N   A L L   I M A G E S   L O A D E D   F U N C T I O N
 \*  ========================================================================  */
 
 // This function waits until all images are loaded:
@@ -561,3 +584,8 @@ function whenAllImagesLoaded(onAllImagesLoaded, loadTime = 0) {
 
 // Load the default game with "Easy" difficulty when the page is loaded
 window.onload = loadDefaultGame;
+
+
+/*  ========================================================================  *\
+      E N D   O F   M I N E S W E E P E R - J a v a S c r i p t   F I L E
+\*  ========================================================================  */
