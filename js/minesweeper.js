@@ -233,32 +233,46 @@ canvas.addEventListener('click', function(event) {  // Kattintás esemény
 
 /*  ========================================================================  *\
       R I G H T  -  C L I C K  -  E V E N T S
+
+      A jobb kattintás eseményeket a zászlózásra használjuk.
+      Ha a játékos jobb kattintást végez egy mezőn, akkor a játékos
+      zászlót helyez a mezőre. Ha a játékos jobb kattintást végez egy
+      már zászlózott mezőn, akkor a játékos eltávolítja a zászlót a mezőről.
+      Ha a játékos jobb kattintást végez egy már felfedett mezőn, akkor
+      a játékos ellenőrzi a szomszédos mezőket, és ha a szomszédos mezők
+      száma megegyezik a mező értékével, akkor a játékos felfedi a szomszédos
+      mezőket.
 \*  ========================================================================  */
 
-canvas.addEventListener('contextmenu', function(event) {
-  event.preventDefault();
-  const x = event.offsetX;
-  const y = event.offsetY;
-  const col = Math.floor(x / size);
-  const row = Math.floor(y / size);
-  if (exploredMap[row][col]) {
-    const neighbourCoordinates = findNeighbourFields(map, row, col);
-    let flaggedNeighbours = countFlaggedNeighbours(neighbourCoordinates);
-    if (flaggedNeighbours === map[row][col]) {
-      for (let i = 0; i < neighbourCoordinates.length; i++) {
-        let coordinate = neighbourCoordinates[i];
-        exploreField(coordinate.row, coordinate.col);
-      }
-    }
-  } else {
-    flagMap[row][col] = !flagMap[row][col];
-    remainingMines += flagMap[row][col] ? -1 : 1;
-    mineCounter.innerText = convertNumberTo3DigitString(remainingMines);
-  }
-  drawMap();
-  if (isGameOver) {
-    showWrongFlags();
-  }
+canvas.addEventListener('contextmenu', function(event) {                   // Jobb kattintás esemény
+  event.preventDefault();                                                    // Alapértelmezett esemény megakadályozása
+  if (isGameOver) return;                                                    // Ha vége a játéknak, kilépünk
+
+  const x = event.offsetX;                                                   // X  -  Vízszintes
+  const y = event.offsetY;                                                   // Y  -  Függőleges
+  const col = Math.floor(x / size);                                          // Oszlop
+  const row = Math.floor(y / size);                                          // Sor
+  if (exploredMap[row][col]) {                                               // Ha a mező már felfedett
+    const neighbourCoordinates = findNeighbourFields(map, row, col);           // Szomszédos mezők
+    let flaggedNeighbours = countFlaggedNeighbours(neighbourCoordinates);      // Zászlózott szomszédok
+    if (flaggedNeighbours === map[row][col]) {                                 // Ha a zászlózott szomszédok száma megegyezik a mező értékével
+      for (let i = 0; i < neighbourCoordinates.length; i++) {                    // Végigmegyünk a szomszédos mezőkön
+        let coordinate = neighbourCoordinates[i];                                  // Koordináta
+        exploreField(coordinate.row, coordinate.col);                              // Mező felfedése
+      }                                                                          // Végigmegyünk a szomszédos mezőkön
+    }                                                                          // Ha a zászlózott szomszédok száma megegyezik a mező értékével
+  }                                                                            // Ha a mező már felfedett
+  else {                                                                     // Ha a mező még nincs felfedve
+    flagMap[row][col] = !flagMap[row][col];                                    // Zászló
+    remainingMines += flagMap[row][col] ? -1 : 1;                              // Hátralévő aknák
+    mineCounter.innerText = convertNumberTo3DigitString(remainingMines);       // Akna számláló
+  }  
+  drawMap();                                                                 // Térkép rajzolása
+  checkGameEnd(row, col);                                                    // Játék vége ellenőrzése
+  if (isGameOver) {                                                          // Ha vége a játéknak
+    showWrongFlags();                                                          // Rossz zászlók
+    stopTimer();                                                               // Időmérő megállítása
+  }                                                                          // Ha vége a játéknak
 });
 
 
