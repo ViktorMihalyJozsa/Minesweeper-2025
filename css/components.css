@@ -38,28 +38,15 @@ body {
     background-position:  center;
 }
 
-    .landscape-warning{
-        z-index:           9999;
-        background-color:  rgba(206, 146, 0, 0.95);  /* Enyhén sötétebb háttér a jobb kontrasztért */
-        opacity:           0;                                                     /* Kezdetben rejtett */
-        transform:         scale(0.9);
-        transition:        opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    }
-
-        /* Amikor aktív, finoman felnagyítjuk és megjelenítjük */
-        .landscape-warning.show {
-            opacity:    1;
-            transform:  scale(1);
-        }
-
         .landscape-warning {
-            font-size:       clamp(1.5rem, 3vw, 2em);
-            font-weight:     bold;
-            letter-spacing:  clamp(0.15rem, 0.3vw, 0.2em);
-            line-height:     10vh;
-            color:           white;
-            text-shadow:     0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 1), -0.1rem -0.1rem black;
-            text-align:      center;
+            background-color:  rgba(255, 0, 0, 0.75);  /* Enyhén sötétebb háttér a jobb kontrasztért */
+
+            font-size:         clamp(1.5rem, 3vw, 2em);
+            font-weight:       bold;
+            letter-spacing:    clamp(0.15rem, 0.3vw, 0.2em);
+            line-height:       10vh;
+            color:             white;
+            text-shadow:       0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 1), -0.1rem -0.1rem black;
         }
 
 
@@ -120,7 +107,7 @@ header {
             cursor:               pointer;
             text-decoration:      none;
 
-            background-image:     url("../assets/action_button.webp");
+            background-image:     url("../assets/action-button.webp");
             background-size:      cover;
             background-repeat:    no-repeat;
             background-position:  center;
@@ -185,7 +172,7 @@ header {
             D R O P - D O W N - C O N T E N T
         \* ======================================================================== */
 
-        .drop-down-content-text {
+        .dropdown-content {
             background-color:  rgba(206, 146, 0, 0.9);
         }
 

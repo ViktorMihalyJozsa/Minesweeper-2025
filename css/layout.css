@@ -49,11 +49,12 @@ body {
     overflow:          hidden;  /* Nem engedjük a görgetést */
 }
 
-    .landscape-warning {
-        display:          flex;
+    #warning {
+        display:          none; /* Alapértelmezetten rejtve van */
         flex-direction:   column;
         justify-content:  center;
         align-items:      center;
+        text-align:       center;
 
         position:         fixed;
         top:              0;
@@ -61,8 +62,17 @@ body {
         width:            100vw;
         height:           100vh;
         padding:          5vh 10vw;
-    }
 
+        opacity:          0;  /* Kezdeti állapot */
+        transition:       opacity 0.5s ease-in-out;
+        z-index:          1000;
+    }   
+    
+        #warning.show {
+            display:  block;
+            opacity:  1;
+        }
+    
 
 /* ======================================================================== *\
     H E A D E R
@@ -210,37 +220,36 @@ main {
             D R O P - D O W N  -  C O N T E N T
         \* ======================================================================== */
 
-        #drop-down-content {
-            display:          none;
-            position:         absolute;
-            top:              calc(1vh + 15vh);
-            left:             0;
+            #drop-down-content {
+                display:          none;                                           /* Kezdetben rejtve van */
+                position:         absolute;                                       /* Abszolút pozíció */
+                top:              calc(1vh + 15vh);                               /* 1vh + 15% of the screen height */
+                left:             0;                                              /* Bal oldalra igazítva */
 
-            width:            30vw;
-            max-height:       0;
-            padding:          0;
-            margin:           0;
+                width:            30vw;                                           /* 30%-a a szekrény szélességének */
+                height:           0;                                              /* Kezdetben 0 a magasság */
+                padding-bottom:   3vh;                                            /* 3% padding az alján */
+                margin:           0;
 
-            border:           0.1vh solid black;
-            border-radius:    1vh;
+                border:           0.1vh solid black;                            /* Keret */
+                border-radius:    1vh;                                            /* Kerekítés */
 
-            overflow:         hidden;
-            scrollbar-width:  none; /* Firefox */
-
-            transition:       max-height 0.8s ease-in-out;
-            z-index:          1;
-        }
-
-            #drop-down-content.show {
-                display:     block;
-                max-height:  30vw;
-                overflow-y:  auto; /* Enable vertical scrolling */
+                overflow:         hidden;                                         /* Túlcsordulás elrejtése */
+                scrollbar-width:  none;                                           /* Firefox */
+                transition:       height 3s ease-in-out, opacity 3s ease-in-out;  /* Animáció hozzáadása */
+                z-index:          1;                                              /* A legfelső réteg */
             }
-
-            /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
-            #drop-down-content::-webkit-scrollbar {
-                display:  none;
-            }
+            
+                #drop-down-content.show {
+                    display:     block;  /* Megjelenítés */
+                    height:      30vw;   /* Változtasd ezt az értéket, ha szükséges */
+                    overflow-y:  auto;   /* Enable vertical scrolling */
+                    opacity:     1;      /* Az áttetszőség is változik */
+                }
+            
+                #drop-down-content::-webkit-scrollbar {
+                    display:  none; /* Webkit böngészőkön a scrollbar eltüntetése */
+                }                       
 
 
         /* ======================================================================== *\
@@ -309,24 +318,24 @@ footer {
         .game-description-text,
         .difficulty-levels-text {
             width:   24vw;  /* 30% of the control panel */
-            height:  6vw;  /* 30% of the control panel */
+            height:  6vw;   /* 30% of the control panel */
         }
 
 
         #drop-down-content {
-            display:          none;
-            position:         absolute;
-            top:              calc(1vh + 20vw);
-            left:             0;
+            display:   none;
+            position:  absolute;
+            top:       calc(1vh + 20vw);
+            left:      0;
 
-            width:            80vw;
-            max-height:       0;
+            width:     80vw;
+            height:    0;
         }
 
             #drop-down-content.show {
-                display:     block;
-                max-height:  80vw;
-                overflow-y:  auto; /* Enable vertical scrolling */
+                display:  block;
+                height:   80vw;   /* Változtasd ezt az értéket, ha szükséges */
+                opacity:  1;      /* Az áttetszőség is változik */
             }
 
             /* Hide scrollbar for Webkit browsers (Chrome, Safari) */

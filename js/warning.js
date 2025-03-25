@@ -8,7 +8,9 @@
 
         A fájl tartalma:
             - Az orientáció ellenőrzése
-            - A figyelmeztetés megjelenítése
+            - Az orientáció változásának figyelése
+            - Az orientációhoz tartozó figyelmeztetés 
+              megjelenítése és eltüntetése animációval
 
         A fájlhoz tartozó CSS:
             - layout.css
@@ -26,19 +28,21 @@ function checkOrientation() {
     const isLandscape = window.matchMedia("(orientation: landscape)").matches;
     const maxWidth = 768;
 
+    // Ha vízszintes tájolásban vagyunk és az ablak szélessége <= maxWidth
     if (isLandscape && window.innerWidth <= maxWidth) {
         warning.style.display = "flex";
-        setTimeout(() => warning.classList.add("show"), 10);
+        setTimeout(() => warning.classList.add("show"), 10); // Figyelmeztetés megjelenítése
     } else {
         warning.classList.remove("show");
         setTimeout(() => {
             if (!warning.classList.contains("show")) {
-                warning.style.display = "none";
+                warning.style.display = "none"; // Figyelmeztetés eltüntetése
             }
-        }, 500);
+        }, 500); // Figyelmeztetés eltüntetése 500ms múlva
     }
 }
 
+// Az események, amelyek figyelik az ablak módosulását
 document.addEventListener("DOMContentLoaded", () => {
     const warning = document.getElementById("warning");
     if (warning) {
@@ -50,9 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-window.addEventListener("resize", checkOrientation);
-window.addEventListener("orientationchange", checkOrientation);
-window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);             // Az ablak méretének változásának figyelése
+window.addEventListener("orientationchange", checkOrientation);  // Az orientáció változásának figyelése
+window.addEventListener("load", checkOrientation);               // Az oldal betöltésekor az orientáció ellenőrzése
 
 
 /*  ========================================================================  *\
