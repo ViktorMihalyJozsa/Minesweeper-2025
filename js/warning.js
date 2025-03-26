@@ -6,11 +6,14 @@
 
     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        A fájl tartalma:
-            - Az orientáció ellenőrzése
-            - Az orientáció változásának figyelése
-            - Az orientációhoz tartozó figyelmeztetés 
-              megjelenítése és eltüntetése animációval
+        A fájl tartalmazza a következő funkciókat:
+
+            1. checkOrientation() 
+                - Az oldal orientációjának ellenőrzése
+            2. window.addEventListener("resize") 
+                - Az oldal átméretezésének figyelése
+            3. window.addEventListener("orientationchange") 
+                - Az oldal orientációjának figyelése
 
         A fájlhoz tartozó CSS:
             - layout.css
@@ -19,7 +22,17 @@
 \*  ========================================================================  */
 
 
-document.addEventListener("DOMContentLoaded", checkOrientation);
+document.addEventListener("DOMContentLoaded", () => {
+    checkOrientation();
+
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(checkOrientation, 200); // Debounce a resize eseményekhez
+    });
+
+    window.addEventListener("orientationchange", checkOrientation);
+});
 
 function checkOrientation() {
     const warning = document.getElementById("warning");
@@ -28,35 +41,18 @@ function checkOrientation() {
     const isLandscape = window.matchMedia("(orientation: landscape)").matches;
     const maxWidth = 768;
 
-    // Ha vízszintes tájolásban vagyunk és az ablak szélessége <= maxWidth
     if (isLandscape && window.innerWidth <= maxWidth) {
         warning.style.display = "flex";
-        setTimeout(() => warning.classList.add("show"), 10); // Figyelmeztetés megjelenítése
+        requestAnimationFrame(() => warning.classList.add("show")); // Sima animáció
     } else {
         warning.classList.remove("show");
-        setTimeout(() => {
-            if (!warning.classList.contains("show")) {
-                warning.style.display = "none"; // Figyelmeztetés eltüntetése
-            }
-        }, 500); // Figyelmeztetés eltüntetése 500ms múlva
-    }
-}
-
-// Az események, amelyek figyelik az ablak módosulását
-document.addEventListener("DOMContentLoaded", () => {
-    const warning = document.getElementById("warning");
-    if (warning) {
         warning.addEventListener("transitionend", () => {
             if (!warning.classList.contains("show")) {
                 warning.style.display = "none";
             }
-        });
+        }, { once: true }); // Eltávolítja az event listenert, hogy ne halmozódjon
     }
-});
-
-window.addEventListener("resize", checkOrientation);             // Az ablak méretének változásának figyelése
-window.addEventListener("orientationchange", checkOrientation);  // Az orientáció változásának figyelése
-window.addEventListener("load", checkOrientation);               // Az oldal betöltésekor az orientáció ellenőrzése
+}
 
 
 /*  ========================================================================  *\
