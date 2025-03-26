@@ -1,6 +1,6 @@
 F I N D E R - J a v a S c r i p t - M i n e s w e e p e r
 
-Created by: V M J & ASK
+Created by: V M J & ASK & OpenAl
 
 Using the minesweeper game in Finder.
 
